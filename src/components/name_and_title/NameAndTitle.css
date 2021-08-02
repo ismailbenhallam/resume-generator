@@ -1,0 +1,8 @@
+.name-and-title {
+  color: white;
+  text-align: center;
+}
+
+.name-and-title .name {
+  font-weight: 500;
+}
