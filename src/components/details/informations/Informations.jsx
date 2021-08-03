@@ -7,106 +7,68 @@ import {
   faMobileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Component } from "react";
+import { PureComponent } from "react";
 import informations from "../../../data/informations";
-import "./informations.css";
+import "./Informations.css";
 
-export default class Informations extends Component {
+export default class Informations extends PureComponent {
   render() {
     return (
       <div className="informations">
-        <h3>Informations</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>
-                <a
-                  href={"mailto:" + informations.email}
-                  target="_blank"
-                  rel="noreferrer">
-                  {informations.email}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>{informations.address}</td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faBirthdayCake}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>{informations.birthDate}</td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>
-                <a href={informations.linkedin}>
-                  @{informations.linkedinUsername}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faGithub}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>
-                <a href={informations.github} target="_blank" rel="noreferrer">
-                  @{informations.githubUsername}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon icon={faFlag} color={this.props.iconsColor} />
-              </td>
-              <td>{informations.nationality}</td>
-            </tr>
-            <tr>
-              <td>
-                <FontAwesomeIcon
-                  icon={faMobileAlt}
-                  color={this.props.iconsColor}
-                />
-              </td>
-              <td>
-                <a
-                  href={"tel:" + informations.mobile}
-                  target="_blank"
-                  rel="noreferrer">
-                  {informations.mobile}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <FontAwesomeIcon icon={faEnvelope} style={this.props.iconsStyle} />
+        <a
+          href={"mailto:" + informations.email}
+          target="_blank"
+          rel="noreferrer"
+          style={this.props.textStyle}>
+          {informations.email}
+        </a>
+        <FontAwesomeIcon icon={faMapMarkerAlt} style={this.props.iconsStyle} />
+        <span style={this.props.textStyle}>{informations.address}</span>
+        <FontAwesomeIcon icon={faBirthdayCake} style={this.props.iconsStyle} />
+        <span style={this.props.textStyle}>
+          {this.props.calculateAge
+            ? this.calculateAge(informations.birthDate)
+            : informations.birthDate}
+        </span>
+        <FontAwesomeIcon icon={faLinkedin} style={this.props.iconsStyle} />
+        <a href={informations.linkedin} style={this.props.textStyle}>
+          @{informations.linkedinUsername}
+        </a>
+        <FontAwesomeIcon icon={faGithub} style={this.props.iconsStyle} />
+        <a
+          href={informations.github}
+          target="_blank"
+          rel="noreferrer"
+          style={this.props.textStyle}>
+          @{informations.githubUsername}
+        </a>
+        <FontAwesomeIcon icon={faFlag} style={this.props.iconsStyle} />
+        <span style={this.props.textStyle}>{informations.nationality}</span>
+        <FontAwesomeIcon icon={faMobileAlt} style={this.props.iconsStyle} />
+        <a
+          href={"tel:" + informations.mobile}
+          target="_blank"
+          rel="noreferrer"
+          style={this.props.textStyle}>
+          {informations.mobile}
+        </a>
       </div>
+    );
+  }
+
+  calculateAge(birthDate) {
+    var ageDifMs = Date.now() - new Date(birthDate).getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return (
+      Math.abs(ageDate.getUTCFullYear() - 1970) + " " + this.props.ageSuffix
     );
   }
 }
 
 Informations.defaultProps = {
-  iconsColor: "red",
+  iconsStyle: { color: "blue", fontSize: "1.2rem" },
+  textStyle: { fontSize: "1.2rem" },
+  calculateAge: true,
+  ageSuffix: "",
 };

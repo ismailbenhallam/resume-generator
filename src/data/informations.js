@@ -4,7 +4,7 @@ let informations = {
   firstName: "Ismaïl",
   lastName: "BENHALLAM",
   email: "ismailben44@gmail.com",
-  birthDate: "09/07/1998",
+  birthDate: "1998-07-09", // yyyy-MM-dd
   nationality: "Marocain",
   situation: "Célibataire",
   mobile: "+212 625-809022",

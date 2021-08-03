@@ -2,7 +2,7 @@ import "./App.css";
 import Informations from "./components/details/informations/Informations";
 
 function App() {
-  return <Informations iconsColor="blue" />;
+  return <Informations ageSuffix="ans" />;
 }
 
 {
