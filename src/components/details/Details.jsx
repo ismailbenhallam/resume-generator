@@ -1,10 +1,11 @@
 import Divider from "../divider/Divider";
 import "./Details.css";
+import Informations from "./informations/Informations";
 
 export default function Details() {
   return (
     <div className="details">
-      <div className="informations">Informations</div>
+      <Informations />
       <Divider />
       <div className="languages">Langues</div>
       <Divider />

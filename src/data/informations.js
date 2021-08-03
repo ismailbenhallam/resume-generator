@@ -10,8 +10,10 @@ let informations = {
   mobile: "+212 625-809022",
   address: "1, Rue Disponsaire, Riad, Meknès",
   webSite: "https://ismailbenhallam.github.io",
-  linkedin: "https://www.linkedin.com/in/ismailbenhallam/",
+  linkedin: "https://www.linkedin.com/in/ismailbenhallam",
+  linkedinUsername: "ismailbenhallam",
   github: "https://github.com/ismailbenhallam",
+  githubUsername: "ismailbenhallam",
 };
 
 export default informations;
