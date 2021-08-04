@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import informations from "../../data/informations.js";
 import "./NameAndTitle.css";
 
-export default class NameAndTitle extends Component {
+export default class NameAndTitle extends PureComponent {
   render() {
     return (
       <div className="name-and-title" style={this.props.style}>

@@ -1,5 +1,5 @@
-import Divider from "../divider/Divider";
-import Margin from "../helpers/Margin";
+import Divider from "../helpers/divider/Divider";
+import Margin from "../helpers/margin/Margin";
 import Assets from "./assets/Assets";
 import "./Details.css";
 import Informations from "./informations/Informations";
@@ -9,7 +9,7 @@ import SectionTitle from "./section_title/SectionTitle";
 
 export default function Details() {
   return (
-    <div className="details">
+    <div className="Details">
       <Margin value="10px 20px">
         <Informations calculateAge="true" ageSuffix="ans" />
       </Margin>

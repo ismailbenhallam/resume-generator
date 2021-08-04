@@ -1,0 +1,44 @@
+.realisations_title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 15px 0 30px 0;
+}
+
+.realisations {
+  display: grid;
+  grid-gap: 20px 60px;
+  grid-template-columns: 20% auto;
+  align-items: center;
+  /* background-color: aliceblue; */
+  margin: 15px 30px;
+  /* justify-content: center;
+  align-content: center; */
+}
+
+.realisations > .period {
+  color: rgba(107, 100, 100, 0.692);
+  font-family: monospace;
+  margin-left: 30px;
+  align-self: flex-start;
+  font-size: 1rem;
+}
+
+.realisations .title {
+  font-weight: bold;
+}
+
+.realisations .enterprise {
+  color: blue;
+}
+
+.realisations .details {
+  color: rgb(97, 94, 94);
+  margin-top: 7px;
+}
+
+.realisations .more {
+  margin-top: 8px;
+  color: rgba(107, 100, 100, 0.753);
+  font-style: italic;
+  /* font-weight: 500; */
+}
