@@ -3,21 +3,12 @@
   grid-gap: 20px 60px;
   grid-template-columns: 20% auto;
   align-items: center;
-  /* background-color: aliceblue; */
   margin: 15px 30px;
-  /* justify-content: center;
-  align-content: center; */
 }
 
 .skills > .key {
   color: rgba(0, 0, 0, 0.692);
   margin-left: 30px;
   align-self: flex-start;
-  /* font-size: 1.2rem; */
   font-weight: bold;
-}
-
-.skills .values {
-  /* font-size: 1.3rem; */
-  /* margin-top: 7px; */
 }

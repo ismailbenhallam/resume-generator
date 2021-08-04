@@ -1,4 +1,5 @@
 import "./App.css";
+import Certifications from "./components/certifications/Certifications";
 import Details from "./components/details/Details";
 import Divider from "./components/helpers/divider/Divider";
 import PhotoAndName from "./components/photo_and_name/PhotoAndName.jsx";
@@ -26,6 +27,8 @@ function App() {
         />
         <Divider />
         <Skills />
+        <Divider />
+        <Certifications />
       </div>
     </div>
   );
