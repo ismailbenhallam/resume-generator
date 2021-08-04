@@ -19,7 +19,11 @@ export default class Informations extends PureComponent {
   render() {
     return (
       <div className="informations">
-        <FontAwesomeIcon icon={faEnvelope} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faEnvelope}
+          style={this.props.iconsStyle}
+        />
         <a
           href={"mailto:" + informations.email}
           target="_blank"
@@ -27,19 +31,35 @@ export default class Informations extends PureComponent {
           style={this.props.textStyle}>
           {informations.email}
         </a>
-        <FontAwesomeIcon icon={faMapMarkerAlt} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faMapMarkerAlt}
+          style={this.props.iconsStyle}
+        />
         <span style={this.props.textStyle}>{informations.address}</span>
-        <FontAwesomeIcon icon={faBirthdayCake} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faBirthdayCake}
+          style={this.props.iconsStyle}
+        />
         <span style={this.props.textStyle}>
           {this.props.calculateAge
             ? this.calculateAge(informations.birthDate)
             : informations.birthDate}
         </span>
-        <FontAwesomeIcon icon={faLinkedin} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faLinkedin}
+          style={this.props.iconsStyle}
+        />
         <a href={informations.linkedin} style={this.props.textStyle}>
           @{informations.linkedinUsername}
         </a>
-        <FontAwesomeIcon icon={faGithub} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faGithub}
+          style={this.props.iconsStyle}
+        />
         <a
           href={informations.github}
           target="_blank"
@@ -47,9 +67,17 @@ export default class Informations extends PureComponent {
           style={this.props.textStyle}>
           @{informations.githubUsername}
         </a>
-        <FontAwesomeIcon icon={faFlag} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faFlag}
+          style={this.props.iconsStyle}
+        />
         <span style={this.props.textStyle}>{informations.nationality}</span>
-        <FontAwesomeIcon icon={faMobileAlt} style={this.props.iconsStyle} />
+        <FontAwesomeIcon
+          className="icon"
+          icon={faMobileAlt}
+          style={this.props.iconsStyle}
+        />
         <a
           href={"tel:" + informations.mobile}
           target="_blank"
@@ -58,6 +86,7 @@ export default class Informations extends PureComponent {
           {informations.mobile}
         </a>
         <FontAwesomeIcon
+          className="icon"
           icon={faInternetExplorer}
           style={this.props.iconsStyle}
         />

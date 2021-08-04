@@ -3,10 +3,9 @@ import Certifications from "./components/certifications/Certifications";
 import Details from "./components/details/Details";
 import Divider from "./components/helpers/divider/Divider";
 import PhotoAndName from "./components/photo_and_name/PhotoAndName.jsx";
-import Realisations from "./components/realisations/Realisations";
+import Education from "./components/realisations/education/Education";
+import Experiences from "./components/realisations/experiences/Experiences";
 import Skills from "./components/skills/Skills";
-import experiences from "./data/experiences.js";
-import formations from "./data/formations.js";
 
 function App() {
   return (
@@ -16,15 +15,9 @@ function App() {
         <Details />
       </div>
       <div className="right">
-        <Realisations
-          realisations={experiences}
-          title="Expériences professionnelles et projets réalisés"
-        />
+        <Experiences />
         <Divider />
-        <Realisations
-          realisations={formations}
-          title="Diplômes et Formations"
-        />
+        <Education />
         <Divider />
         <Skills />
         <Divider />

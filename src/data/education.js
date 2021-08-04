@@ -1,4 +1,4 @@
-let formations = [
+let education = [
   {
     period: "2021",
     title: "Master Qualité du Logiciel",
@@ -26,4 +26,4 @@ let formations = [
   },
 ];
 
-export default formations;
+export default education;

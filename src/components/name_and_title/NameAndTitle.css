@@ -1,7 +1,9 @@
 .name-and-title {
   color: white;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 10px;
 }
 
 .name-and-title .name {
