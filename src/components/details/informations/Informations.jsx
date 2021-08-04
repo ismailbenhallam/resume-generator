@@ -1,4 +1,8 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faInternetExplorer,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faBirthdayCake,
   faEnvelope,
@@ -52,6 +56,17 @@ export default class Informations extends PureComponent {
           rel="noreferrer"
           style={this.props.textStyle}>
           {informations.mobile}
+        </a>
+        <FontAwesomeIcon
+          icon={faInternetExplorer}
+          style={this.props.iconsStyle}
+        />
+        <a
+          href={informations.webSite}
+          target="_blank"
+          rel="noreferrer"
+          style={this.props.textStyle}>
+          {informations.webSite}
         </a>
       </div>
     );

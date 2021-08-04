@@ -5,7 +5,7 @@ export default class Realisations extends PureComponent {
   render() {
     return (
       <>
-        <div className="realisations_title">{this.props.title}</div>
+        <div className="section_title">{this.props.title}</div>
         <div className="realisations">
           {this.props.realisations.map((r) => (
             <>

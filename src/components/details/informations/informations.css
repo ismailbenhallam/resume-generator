@@ -5,6 +5,8 @@
   grid-gap: 6px 15px;
   grid-template-columns: max-content max-content;
   align-items: center;
+  align-content: center;
   justify-content: center;
   /* background-color: aqua; */
+  line-height: normal;
 }

@@ -3,6 +3,7 @@ import Details from "./components/details/Details";
 import Divider from "./components/helpers/divider/Divider";
 import PhotoAndName from "./components/photo_and_name/PhotoAndName.jsx";
 import Realisations from "./components/realisations/Realisations";
+import Skills from "./components/skills/Skills";
 import experiences from "./data/experiences.js";
 import formations from "./data/formations.js";
 
@@ -23,6 +24,8 @@ function App() {
           realisations={formations}
           title="Diplômes et Formations"
         />
+        <Divider />
+        <Skills />
       </div>
     </div>
   );
