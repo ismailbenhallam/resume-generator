@@ -1,1 +1,3 @@
-let interest = ["Football", "Natation", "Voyage", "Gaming"];
+let interests = ["Football", "Natation", "Voyage", "Gaming"];
+
+export default interests;

@@ -1,20 +1,33 @@
 import Divider from "../divider/Divider";
+import Margin from "../helpers/Margin";
+import Assets from "./assets/Assets";
 import "./Details.css";
 import Informations from "./informations/Informations";
+import Interests from "./interests/Interests";
+import Languages from "./languages/Languages";
+import SectionTitle from "./section_title/SectionTitle";
 
 export default function Details() {
   return (
     <div className="details">
-      <Informations
-        iconsStyle={{ color: "white", fontSize: "20px" }}
-        color="yellow"
-      />
+      <Margin value="10px 20px">
+        <Informations calculateAge="true" ageSuffix="ans" />
+      </Margin>
       <Divider />
-      <div className="languages">Langues</div>
+      <SectionTitle title="Langues" />
+      <Margin value="10px 35px">
+        <Languages />
+      </Margin>
       <Divider />
-      <div className="assets">Atouts</div>
+      <SectionTitle title="Atouts" />
+      <Margin value="10px 35px">
+        <Assets />
+      </Margin>
       <Divider />
-      <div className="interests">Centres d'intérêt</div>
+      <SectionTitle title="Centres d'intérêt" />
+      <Margin value="10px 35px">
+        <Interests />
+      </Margin>
     </div>
   );
 }

@@ -61,14 +61,15 @@ export default class Informations extends PureComponent {
     var ageDifMs = Date.now() - new Date(birthDate).getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
     return (
-      Math.abs(ageDate.getUTCFullYear() - 1970) + " " + this.props.ageSuffix
+      Math.abs(ageDate.getUTCFullYear() - 1970) +
+      " " +
+      this.props.ageSuffix.trim()
     );
   }
 }
 
 Informations.defaultProps = {
-  iconsStyle: { color: "blue", fontSize: "1.2rem" },
-  textStyle: { fontSize: "1.2rem" },
-  calculateAge: true,
+  iconsStyle: { color: "white", fontSize: "18px" },
+  textStyle: { color: "white" },
   ageSuffix: "",
 };

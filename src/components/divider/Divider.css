@@ -1,13 +1,13 @@
 .h-divider {
   margin: auto;
-  margin-top: 80px;
+  margin-top: 10px;
   width: 80%;
   position: relative;
 }
 
 .h-divider .shadow {
   overflow: hidden;
-  height: 20px;
+  height: 5px;
 }
 
 .h-divider .shadow:after {

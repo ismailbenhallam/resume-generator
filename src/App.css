@@ -1,22 +1,23 @@
 .container {
   background-color: gainsboro;
-  width: 595px;
-  height: 842px;
+  /* width: 595px; */
+  /* height: 842px; */
   display: flex;
   flex-direction: row;
 }
 
 .left {
   background-color: #1a63b1;
-  height: 100%;
-  flex-basis: 1;
   display: flex;
   flex-direction: column;
+  flex-basis: 1;
+  align-items: center;
+  height: 100%;
 }
 
 /******************* Right *********************/
 .right {
   background-color: whitesmoke;
   height: 100%;
-  flex-basis: 2;
+  flex-basis: 3;
 }

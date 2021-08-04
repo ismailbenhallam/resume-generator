@@ -5,3 +5,5 @@ let assets = [
   "Apprentissage rapide",
   "Esprit de leadership",
 ];
+
+export default assets;

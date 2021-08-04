@@ -1,18 +1,17 @@
 import "./App.css";
-import Informations from "./components/details/informations/Informations";
+import Details from "./components/details/Details";
+import PhotoAndName from "./components/photo_and_name/PhotoAndName.jsx";
 
 function App() {
-  return <Informations ageSuffix="ans" />;
-}
-
-{
-  /* <div className="container">
-  <div className="left">
-    <PhotoAndName />
-    <Details />
-  </div>
-  <div className="right"></div>
-</div>; */
+  return (
+    <div className="container">
+      <div className="left">
+        <PhotoAndName />
+        <Details />
+      </div>
+      <div className="right"></div>
+    </div>
+  );
 }
 
 export default App;
