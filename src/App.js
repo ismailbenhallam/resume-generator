@@ -2,13 +2,7 @@ import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
 import "./App.css";
-import Certifications from "./components/certifications/Certifications";
-import Details from "./components/details/Details";
-import Divider from "./components/helpers/divider/Divider";
-import PhotoAndName from "./components/photo_and_name/PhotoAndName.jsx";
-import Education from "./components/realisations/education/Education";
-import Experiences from "./components/realisations/experiences/Experiences";
-import Skills from "./components/skills/Skills";
+import Template1 from "./templates/template1/Template1.jsx";
 
 class App extends PureComponent {
   render() {
@@ -30,19 +24,7 @@ class App extends PureComponent {
           </button>
         </div>
         <div id="resume" className="container">
-          <div className="left">
-            <PhotoAndName />
-            <Details />
-          </div>
-          <div className="right">
-            <Experiences />
-            <Divider />
-            <Education />
-            <Divider />
-            <Skills />
-            <Divider />
-            <Certifications />
-          </div>
+          <Template1 />;
         </div>
       </>
     );

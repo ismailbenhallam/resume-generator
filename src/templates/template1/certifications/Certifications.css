@@ -1,0 +1,18 @@
+.template1 .certifications {
+  margin: 0px 10px;
+}
+
+.template1 .certification {
+  color: black;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.template1 .certification:hover {
+  color: rgb(40, 4, 241);
+}
+
+.template1 .certifications .icon {
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
