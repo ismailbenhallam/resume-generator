@@ -2,7 +2,9 @@
 
 This project developed using ReactJs and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![resume-generator](https://user-images.githubusercontent.com/36603897/128341516-7365522c-3c09-4043-a6d5-9e3ab5af9273.png)
+## Examples of templates
+![generated-resume1](https://user-images.githubusercontent.com/36603897/128642444-84cf5098-48c0-4559-a648-9faaf0ef3dbd.png)
+![generated-resume2](https://user-images.githubusercontent.com/36603897/128642448-bb53255f-cb47-4d4b-8306-c311ebd6c962.png)
 
 ## Available Scripts
 
