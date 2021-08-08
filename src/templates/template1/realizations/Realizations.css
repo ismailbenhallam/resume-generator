@@ -1,4 +1,4 @@
-.realisations {
+.template1 .realizations {
   display: grid;
   grid-gap: 10px 20px;
   grid-template-columns: 20% auto;
@@ -7,7 +7,7 @@
   font-size: 0.7rem;
 }
 
-.realisations > .period {
+.template1 .realizations > .period {
   color: rgba(107, 100, 100, 0.692);
   margin-left: 10px;
   align-self: flex-start;
@@ -15,21 +15,21 @@
   width: 100%;
 }
 
-.realisations .title {
+.template1 .realizations .title {
   font-weight: bold;
   font-size: 0.8rem;
 }
 
-.realisations .enterprise {
+.template1 .realizations .enterprise {
   color: blue;
 }
 
-.realisations .details {
+.template1 .realizations .details {
   color: rgb(97, 94, 94);
   margin-top: 2px;
 }
 
-.realisations .more {
+.template1 .realizations .more {
   margin-top: 1px;
   color: rgba(107, 100, 100, 0.753);
   font-style: italic;

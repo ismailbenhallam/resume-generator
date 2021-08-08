@@ -1,0 +1,11 @@
+.template2 .section-title h3 {
+  color: var(--accent-color);
+  margin-bottom: -3px;
+}
+
+.template2 .section-title hr {
+  /* width: 100%; */
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  /* height: 0.1px; */
+}

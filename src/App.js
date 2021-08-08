@@ -2,21 +2,16 @@ import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
 import "./App.css";
-import Template1 from "./templates/template1/Template1.jsx";
+import Template2 from "./templates/template2/Template2";
+// import Template1 from "./templates/template1/Template1";
 
 class App extends PureComponent {
   render() {
     return (
       <>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "20px",
-            marginBottom: "20px",
-          }}>
+        <div className="save-button-wrapper">
           <button
-            className="saveButton"
+            className="save-button"
             tabIndex={1}
             onClick={() => window.print()}>
             Save as PDF&nbsp;
@@ -24,11 +19,33 @@ class App extends PureComponent {
           </button>
         </div>
         <div id="resume" className="container">
-          <Template1 />;
+          <Template2 />
         </div>
       </>
     );
   }
 }
 
+class ErrorBoundaries extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+    };
+  }
+
+  render() {
+    return !this.state.hasError ? (
+      <div>{this.props.children}</div>
+    ) : (
+      <div>Error</div>
+    );
+  }
+
+  static getDerivedStateFromError() {
+    return {
+      hasError: true,
+    };
+  }
+}
 export default App;

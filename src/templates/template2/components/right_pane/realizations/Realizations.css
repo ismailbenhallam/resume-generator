@@ -1,0 +1,43 @@
+.template2 .realizations {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.template2 .realization {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.template2 .realizations .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.template2 .realizations .top-left {
+  display: flex;
+  flex-direction: column;
+}
+.template2 .realizations .top-right {
+  text-align: end;
+}
+
+.template2 .realizations .enterprise {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.template2 .realizations .top-right {
+  font-weight: bold;
+}
+
+.template2 .realization .bottom {
+  margin-top: 5px;
+}
+
+.template2 .realizations .more {
+  font-style: italic;
+}

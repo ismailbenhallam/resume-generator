@@ -1,13 +1,13 @@
 import { Fragment, PureComponent } from "react";
-import "./Realisations.css";
+import "./Realizations.css";
 
-export default class Realisations extends PureComponent {
+export default class Realizations extends PureComponent {
   render() {
     return (
       <>
         <div className="section_title">{this.props.title}</div>
-        <div className="realisations">
-          {this.props.realisations.map((r) => (
+        <div className="realizations">
+          {this.props.realizations.map((r) => (
             <Fragment key={r.title}>
               <div className="period">{r.period}</div>
               <div className="content">
@@ -32,6 +32,6 @@ export default class Realisations extends PureComponent {
   }
 }
 
-Realisations.defaultProps = {
+Realizations.defaultProps = {
   technologiesPrefix: "Technologies: ",
 };

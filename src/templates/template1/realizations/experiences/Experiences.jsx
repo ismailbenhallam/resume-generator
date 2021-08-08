@@ -1,10 +1,10 @@
 import experiences from "../../../../data/experiences";
-import Realisations from "../Realisations";
+import Realizations from "../Realizations";
 
 export default function Experiences() {
   return (
-    <Realisations
-      realisations={experiences}
+    <Realizations
+      realizations={experiences}
       title="Expériences professionnelles et projets réalisés"
     />
   );

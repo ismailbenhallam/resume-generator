@@ -1,5 +1,5 @@
 let informations = {
-  title: "Développeur Java/JavaEE",
+  title: "Software engineer & Java Enthusiast",
   imageUrl: "./ismail.jpg",
   firstName: "Ismaïl",
   lastName: "BENHALLAM",
@@ -14,6 +14,7 @@ let informations = {
   linkedinUsername: "ismailbenhallam",
   github: "https://github.com/ismailbenhallam",
   githubUsername: "ismailbenhallam",
+  language: "fr",
 };
 
 export default informations;

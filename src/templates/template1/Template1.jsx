@@ -2,8 +2,8 @@ import Certifications from "./certifications/Certifications";
 import Details from "./details/Details";
 import Divider from "./helpers/divider/Divider";
 import PhotoAndName from "./photo_and_name/PhotoAndName";
-import Education from "./realisations/education/Education";
-import Experiences from "./realisations/experiences/Experiences";
+import Education from "./realizations/education/Education";
+import Experiences from "./realizations/experiences/Experiences";
 import Skills from "./skills/Skills";
 import "./Template1.css";
 
