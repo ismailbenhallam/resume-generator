@@ -1,4 +1,4 @@
-.name-and-title {
+.template1 .name-and-title {
   color: white;
   text-align: center;
   font-size: 1rem;
@@ -6,6 +6,6 @@
   bottom: 10px;
 }
 
-.name-and-title .name {
+.template1 .name-and-title .name {
   font-weight: 500;
 }

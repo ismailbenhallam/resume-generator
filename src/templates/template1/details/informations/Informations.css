@@ -1,4 +1,4 @@
-.informations {
+.template1 .informations {
   font-family: "Gowun Batang";
   display: grid;
   grid-gap: 5px 5px;
@@ -9,7 +9,7 @@
   line-height: normal;
   font-size: 0.71rem;
 }
-.informations > .icon {
+.template1 .informations > .icon {
   margin: auto;
   font-size: 0.7rem;
 }
