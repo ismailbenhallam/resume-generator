@@ -1,0 +1,107 @@
+#profile-page {
+  background-color: rgb(221, 251, 251);
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-page .grid {
+  display: grid;
+  /* flex-direction: row; */
+  grid-template-columns: auto 70%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Information Tab */
+#profile-page .informations-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+#profile-page .informations-tab ul {
+  list-style-type: none;
+  padding-inline-start: unset;
+  margin-top: unset;
+}
+
+#profile-page .informations-tab ul li {
+  cursor: pointer;
+}
+
+#profile-page .informations-tab ul li:hover {
+  color: orangered;
+}
+
+#profile-page .informations-tab ul li.active {
+  color: orangered;
+  font-weight: bold;
+}
+
+/* Active tab */
+
+#profile-page .active-tab {
+  width: 100%;
+  /* background-color: azure; */
+}
+
+/* Coordinates */
+#profile-page .active-tab .coordinates {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 10px;
+  margin: 0 20px 20px 20px;
+}
+
+/* Langagues */
+#profile-page .active-tab .langague {
+  display: grid;
+  grid-template-columns: 40% 46% 8%;
+  margin-bottom: 10px;
+}
+
+#profile-page .active-tab .langague .remove-btn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#profile-page .active-tab .langagues-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-page .active-tab .languages-input {
+  display: grid;
+  grid-template-columns: max-content auto max-content auto;
+  row-gap: 10px;
+  column-gap: 30px;
+}
+
+#profile-page .active-tab .add-btn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}
+
+/* Save Button */
+#profile-page .save-btn {
+  margin: 20px auto 0 auto;
+  font-size: 1.5rem;
+  padding: 15px 25px;
+  border-radius: 8px;
+  background-color: rgb(255, 129, 129);
+  color: aliceblue;
+  /* border: 1px solid black; */
+  cursor: pointer;
+}
