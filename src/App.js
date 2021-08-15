@@ -1,9 +1,9 @@
 import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./App.css";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/Profile/ProfilePage";
 import Template1 from "./templates/template1/Template1";
 import Template2 from "./templates/template2/Template2";
 
@@ -24,8 +24,10 @@ class App extends PureComponent {
         <Switch>
           <Route path="/profile">
             <ProfilePage />
+            <Link to="/">Voir</Link>
           </Route>
           <Route path="/">
+            <Link to="/profile">Profile</Link>
             <select onChange={this.handleChangeTemplate}>
               {Object.entries(this.state.templates).map((entry) => (
                 <option key={entry[0]} value={entry[0]}>
