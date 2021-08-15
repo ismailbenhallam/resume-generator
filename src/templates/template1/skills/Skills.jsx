@@ -1,8 +1,10 @@
 import { Fragment } from "react";
-import skills from "../../../data/skills.js";
+import SkillsService from "../../../services/skills-service";
 import "./Skills.css";
 
 const Skills = () => {
+  const service = new SkillsService();
+  const skills = service.getAll();
   return (
     <>
       <div className="section_title">Compétences</div>
@@ -13,7 +15,7 @@ const Skills = () => {
           return (
             <Fragment key={key}>
               <div className="key">{key}</div>
-              <div className="values">{values.join(", ")}</div>
+              <div className="values">{values ? values.join(", ") : ""}</div>
             </Fragment>
           );
         })}

@@ -5,13 +5,15 @@ import Certifications from "./certifications/Certifications";
 import Coordinates from "./coordinates/Coordinates";
 import Interests from "./interests/Interests";
 import Languages from "./languages/Languages";
+import PrincipalSkillss from "./principal-skills/PrincipalSkills";
 import "./ProfilePage.css";
+import Skills from "./skills/Skills";
 
 export default class ProfilePage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLi: "certifications",
+      selectedLi: "principal skills",
     };
     this.elements = [
       "coordinates",
@@ -21,6 +23,7 @@ export default class ProfilePage extends PureComponent {
       "experiences",
       "education",
       "skills",
+      "principal skills",
       "certifications",
     ];
   }
@@ -59,6 +62,10 @@ export default class ProfilePage extends PureComponent {
             {this.state.selectedLi === "languages" && <Languages />}
             {this.state.selectedLi === "assets" && <Assets />}
             {this.state.selectedLi === "interests" && <Interests />}
+            {this.state.selectedLi === "skills" && <Skills />}
+            {this.state.selectedLi === "principal skills" && (
+              <PrincipalSkillss />
+            )}
             {this.state.selectedLi === "certifications" && <Certifications />}
           </div>
         </div>

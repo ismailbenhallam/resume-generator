@@ -1,14 +1,15 @@
-#profile-page .active-tab .assets-list {
-  margin-bottom: 50px;
+#profile-page .active-tab .skills-list {
+  margin-bottom: 40px;
 }
 
-#profile-page .active-tab .asset {
+#profile-page .active-tab .skill {
   display: grid;
-  grid-template-columns: auto 8%;
+  grid-template-columns: 18% auto 8%;
   margin-bottom: 10px;
+  column-gap: 15px;
 }
 
-#profile-page .active-tab .asset .remove-btn {
+#profile-page .active-tab .skill .remove-btn {
   background-color: red;
   color: aliceblue;
   border: 1px solid;
@@ -18,16 +19,16 @@
   height: max-content;
 }
 
-#profile-page .active-tab .assets-input-wrapper {
+#profile-page .active-tab .skills-input-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#profile-page .active-tab .assets-input {
+#profile-page .active-tab .skills-input {
   display: grid;
-  grid-template-columns: 15% 60%;
+  grid-template-columns: max-content auto max-content auto;
   row-gap: 10px;
   column-gap: 30px;
   justify-content: center;

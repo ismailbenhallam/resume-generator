@@ -1,4 +1,7 @@
-/* Langagues */
+#profile-page .active-tab .interests-list {
+  margin-bottom: 40px;
+}
+
 #profile-page .active-tab .interest {
   display: grid;
   grid-template-columns: auto 8%;
@@ -12,6 +15,7 @@
   border-radius: 5%;
   font-size: 1rem;
   cursor: pointer;
+  height: max-content;
 }
 
 #profile-page .active-tab .interests-input-wrapper {
@@ -23,9 +27,11 @@
 
 #profile-page .active-tab .interests-input {
   display: grid;
-  grid-template-columns: max-content auto max-content auto;
+  grid-template-columns: 15% 60%;
   row-gap: 10px;
   column-gap: 30px;
+  justify-content: center;
+  width: 100%;
 }
 
 #profile-page .active-tab .add-btn {

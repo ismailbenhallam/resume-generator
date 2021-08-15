@@ -63,7 +63,7 @@ export default class Certifications extends PureComponent {
                   X
                 </button>
               </div>
-              {index <= this.state.certification.length && <hr />}
+              {index + 1 < this.state.certifications.length && <hr />}
             </>
           ))}
         </div>

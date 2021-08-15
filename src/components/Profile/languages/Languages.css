@@ -1,4 +1,7 @@
-/* Langagues */
+#profile-page .active-tab .langagues-list {
+  margin-bottom: 40px;
+}
+
 #profile-page .active-tab .langague {
   display: grid;
   grid-template-columns: 40% 46% 8%;
@@ -12,6 +15,7 @@
   border-radius: 5%;
   font-size: 1rem;
   cursor: pointer;
+  height: max-content;
 }
 
 #profile-page .active-tab .langagues-input-wrapper {
@@ -23,9 +27,11 @@
 
 #profile-page .active-tab .languages-input {
   display: grid;
-  grid-template-columns: max-content auto max-content auto;
+  grid-template-columns: auto 30% auto 30%;
   row-gap: 10px;
   column-gap: 30px;
+  justify-content: center;
+  width: 100%;
 }
 
 #profile-page .active-tab .add-btn {

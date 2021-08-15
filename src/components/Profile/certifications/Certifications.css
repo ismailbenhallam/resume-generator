@@ -13,6 +13,7 @@
   border-radius: 5%;
   font-size: 1rem;
   cursor: pointer;
+  height: max-content;
 }
 
 #profile-page .active-tab .certifications-input-wrapper {
@@ -24,9 +25,10 @@
 
 #profile-page .active-tab .certifications-input {
   display: grid;
-  grid-template-columns: max-content auto max-content auto max-content auto;
+  grid-template-columns: 30% auto;
   row-gap: 10px;
   column-gap: 30px;
+  width: 80%;
 }
 
 #profile-page .active-tab .add-btn {
