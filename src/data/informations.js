@@ -11,9 +11,7 @@ let informations = {
   address: "1, Rue Disponsaire, Riad, Meknès",
   website: "https://ismailbenhallam.github.io",
   linkedin: "https://www.linkedin.com/in/ismailbenhallam",
-  linkedinUsername: "ismailbenhallam",
   github: "https://github.com/ismailbenhallam",
-  githubUsername: "ismailbenhallam",
   language: "fr",
 };
 

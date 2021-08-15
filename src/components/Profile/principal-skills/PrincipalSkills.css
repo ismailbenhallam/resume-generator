@@ -5,7 +5,7 @@
 #profile-page .active-tab .principalSkill {
   display: grid;
   grid-template-columns: auto 8%;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 #profile-page .active-tab .principalSkills .remove-btn {

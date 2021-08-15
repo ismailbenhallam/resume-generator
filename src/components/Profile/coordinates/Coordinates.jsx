@@ -42,25 +42,11 @@ export default class Coordinates extends PureComponent {
         [entry[0]]: entry[1],
       });
     });
-
-    let githubUsernameStartIndex = this.state.github.lastIndexOf("/");
-    let linkedinUsernameStartIndex = this.state.linkedin.lastIndexOf("/");
-
-    // Save usernames for GitHub and linkedIn
-    let githubUsername = this.state.github
-      .substring(githubUsernameStartIndex)
-      .substring(1);
-    let linkedinUsername = this.state.linkedin
-      .substring(linkedinUsernameStartIndex)
-      .substring(1);
-
-    this.service.addOne({ githubUsername: githubUsername });
-    this.service.addOne({ linkedinUsername: linkedinUsername });
   };
 
   render() {
     return (
-      <form>
+      <form className="coordinates-form">
         <div className="coordinates">
           <label htmlFor="input-firstName">First Name</label>
           <input
@@ -150,10 +136,10 @@ export default class Coordinates extends PureComponent {
             value={this.state.nationality}
             onChange={this.handleChange}
           />
-          <button className="save-btn" onClick={this.save}>
-            Save
-          </button>
         </div>
+        <button className="save-btn" onClick={this.save}>
+          Save
+        </button>
       </form>
     );
   }

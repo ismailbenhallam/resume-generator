@@ -1,5 +1,5 @@
 import CoordinatesService from "../../../../services/coordinates";
-import capitalize from "../../../../services/string-utilities";
+import capitalize from "../../../../utilities/capitalize";
 import "./NameAndTitle.css";
 
 export default function NameAndTitle() {

@@ -1,6 +1,6 @@
 import { PureComponent } from "react";
 import SkillsService from "../../../services/skills-service";
-import capitalize from "../../../services/string-utilities";
+import capitalize from "../../../utilities/capitalize";
 import "./Skills.css";
 
 export default class Skills extends PureComponent {

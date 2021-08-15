@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
 import CoordinatesService from "../../../../services/coordinates";
+import getUsernameFromNetworkUrl from "../../../../utilities/getUsernameFromNetworkUrl";
 import "./Informations.css";
 
 export default class Informations extends PureComponent {
@@ -59,7 +60,7 @@ export default class Informations extends PureComponent {
           style={this.props.iconsStyle}
         />
         <a href={this.informations.linkedin} style={this.props.textStyle}>
-          @{this.informations.linkedinUsername}
+          @{getUsernameFromNetworkUrl(this.informations.linkedin)}
         </a>
         <FontAwesomeIcon
           className="icon"
@@ -71,7 +72,7 @@ export default class Informations extends PureComponent {
           target="_blank"
           rel="noreferrer"
           style={this.props.textStyle}>
-          @{this.informations.githubUsername}
+          @{getUsernameFromNetworkUrl(this.informations.github)}
         </a>
         <FontAwesomeIcon
           className="icon"

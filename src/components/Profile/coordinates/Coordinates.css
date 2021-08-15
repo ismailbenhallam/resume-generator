@@ -1,8 +1,15 @@
 /* Coordinates */
+#profile-page .active-tab .coordinates-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #profile-page .active-tab .coordinates {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: max-content auto;
   row-gap: 10px;
+  column-gap: 30px;
   margin: 0 20px 20px 20px;
 }
 

@@ -1,4 +1,4 @@
-import capitalize from "../../../../services/string-utilities.js";
+import capitalize from "../../../../utilities/capitalize";
 import "./DetailsSectionTitle.css";
 
 let DetailsSectionTitle = (props) => {

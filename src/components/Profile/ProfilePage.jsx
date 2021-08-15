@@ -1,5 +1,5 @@
 import { PureComponent } from "react";
-import capitalize from "../../services/string-utilities";
+import capitalize from "../../utilities/capitalize";
 import Assets from "./assets/Assets";
 import Certifications from "./certifications/Certifications";
 import Coordinates from "./coordinates/Coordinates";
@@ -12,9 +12,6 @@ import Skills from "./skills/Skills";
 export default class ProfilePage extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedLi: "principal skills",
-    };
     this.elements = [
       "coordinates",
       "languages",
@@ -26,6 +23,9 @@ export default class ProfilePage extends PureComponent {
       "principal skills",
       "certifications",
     ];
+    this.state = {
+      selectedLi: this.elements[0],
+    };
   }
 
   handleLiClick = (event) => {
