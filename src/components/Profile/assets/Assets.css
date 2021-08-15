@@ -1,0 +1,34 @@
+/* Langagues */
+#profile-page .active-tab .asset {
+  display: grid;
+  grid-template-columns: auto 8%;
+  margin-bottom: 10px;
+}
+
+#profile-page .active-tab .asset .remove-btn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#profile-page .active-tab .assets-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-page .active-tab .assets-input {
+  display: grid;
+  grid-template-columns: max-content auto max-content auto;
+  row-gap: 10px;
+  column-gap: 30px;
+}
+
+#profile-page .active-tab .add-btn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}

@@ -10,32 +10,41 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
-import informations from "../../../../../data/informations";
+import CoordinatesService from "../../../../../services/coordinates";
 import "./Contact.css";
 
 export default class Contact extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.service = new CoordinatesService();
+    this.informations = this.service.getAll();
+  }
   render() {
     return (
       <div className="contact">
         <FontAwesomeIcon className="icon" icon={faPhoneAlt} />
-        <a href={"tel:" + informations.mobile}>{informations.mobile}</a>
+        <a href={"tel:" + this.informations.mobile}>
+          {this.informations.mobile}
+        </a>
         <FontAwesomeIcon className="icon" icon={faEnvelope} />
-        <span>{informations.email}</span>
+        <span>{this.informations.email}</span>
         <FontAwesomeIcon className="icon" icon={faBirthdayCake} />
         <span>
           {this.props.calculateAge
-            ? this.calculateAge(informations.birthDate)
-            : this.formatBirthDate(informations.birthDate)}
+            ? this.calculateAge(this.informations.birthDate)
+            : this.formatBirthDate(this.informations.birthDate)}
         </span>
         <FontAwesomeIcon className="icon" icon={faLinkedin} />
-        <a href={informations.linkedin}>@{informations.linkedinUsername}</a>
+        <a href={this.informations.linkedin}>
+          @{this.informations.linkedinUsername}
+        </a>
         <FontAwesomeIcon className="icon" icon={faGithub} />
-        <a href={informations.github} target="_blank" rel="noreferrer">
-          @{informations.githubUsername}
+        <a href={this.informations.github} target="_blank" rel="noreferrer">
+          @{this.informations.githubUsername}
         </a>
         <FontAwesomeIcon className="icon" icon={faInternetExplorer} />
-        <a href={informations.webSite} target="_blank" rel="noreferrer">
-          {informations.webSite}
+        <a href={this.informations.website} target="_blank" rel="noreferrer">
+          {this.informations.website}
         </a>
       </div>
     );
@@ -53,7 +62,7 @@ export default class Contact extends PureComponent {
   formatBirthDate = (birthDate) => {
     let d = new Date(birthDate);
     return d
-      .toLocaleDateString(informations.language, {
+      .toLocaleDateString(this.informations.language, {
         day: "numeric",
         month: "long",
         year: "numeric",

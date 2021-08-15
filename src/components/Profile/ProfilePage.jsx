@@ -1,6 +1,8 @@
 import { PureComponent } from "react";
-import capitalize from "../../services/string_utilities";
+import capitalize from "../../services/string-utilities";
+import Assets from "./assets/Assets";
 import Coordinates from "./coordinates/Coordinates";
+import Interests from "./interests/Interests";
 import Languages from "./languages/Languages";
 import "./ProfilePage.css";
 
@@ -8,7 +10,7 @@ export default class ProfilePage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLi: "languages",
+      selectedLi: "coordinates",
     };
     this.elements = [
       "coordinates",
@@ -54,11 +56,13 @@ export default class ProfilePage extends PureComponent {
           <div className="active-tab">
             {this.state.selectedLi === "coordinates" && <Coordinates />}
             {this.state.selectedLi === "languages" && <Languages />}
+            {this.state.selectedLi === "assets" && <Assets />}
+            {this.state.selectedLi === "interests" && <Interests />}
           </div>
         </div>
-        {this.state.selectedLi === "coordinates" && (
+        {/* {this.state.selectedLi === "coordinates" && (
           <button className="save-btn">Save</button>
-        )}
+        )} */}
       </div>
     );
   }

@@ -1,8 +1,10 @@
 import { Fragment } from "react";
-import languages from "../../../../data/languages";
+import LanguagesService from "../../../../services/languages-service";
 import "./Languages.css";
 
 export default function Languages() {
+  const service = new LanguagesService();
+  const languages = service.getAll();
   let elements = Object.entries(languages).map((entry) => (
     <Fragment key={entry[0]}>
       <span>{entry[0]}</span>

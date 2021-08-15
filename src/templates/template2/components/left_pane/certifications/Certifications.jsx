@@ -8,7 +8,7 @@ export default function Certifications() {
       <SectionTitle title="Certifications" />
       <div className="certifications">
         {certifications.map((certif) => (
-          <div className="certification">
+          <div key={certif.name} className="certification">
             {certif.url ? (
               <a href={certif.url}>{certif.name}</a>
             ) : (

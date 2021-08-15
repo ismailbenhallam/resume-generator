@@ -8,7 +8,7 @@ export default function Skills() {
       <SectionTitle title="Competences" />
       <div className="skills-wrapper">
         {principalSkills.map((s) => (
-          <span>{s}</span>
+          <span key={s}>{s}</span>
         ))}
       </div>
     </div>

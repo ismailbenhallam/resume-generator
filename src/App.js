@@ -60,26 +60,26 @@ class App extends PureComponent {
   };
 }
 
-class ErrorBoundaries extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hasError: false,
-    };
-  }
+// class ErrorBoundaries extends PureComponent {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       hasError: false,
+//     };
+//   }
 
-  render() {
-    return !this.state.hasError ? (
-      <div>{this.props.children}</div>
-    ) : (
-      <div>Error</div>
-    );
-  }
+//   render() {
+//     return !this.state.hasError ? (
+//       <div>{this.props.children}</div>
+//     ) : (
+//       <div>Error</div>
+//     );
+//   }
 
-  static getDerivedStateFromError() {
-    return {
-      hasError: true,
-    };
-  }
-}
+//   static getDerivedStateFromError() {
+//     return {
+//       hasError: true,
+//     };
+//   }
+// }
 export default App;

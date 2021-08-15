@@ -1,8 +1,10 @@
-import informations from "../../../data/informations.js";
-import capitalize from "../../../services/string_utilities.js";
+import CoordinatesService from "../../../services/coordinates.js";
+import capitalize from "../../../services/string-utilities";
 import "./NameAndTitle.css";
 
 export default function NameAndTitle() {
+  let service = new CoordinatesService();
+  let informations = service.getAll();
   return (
     <div className="name-and-title">
       <span className="name">

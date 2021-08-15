@@ -9,7 +9,7 @@ let informations = {
   situation: "Célibataire",
   mobile: "+212 625-809022",
   address: "1, Rue Disponsaire, Riad, Meknès",
-  webSite: "https://ismailbenhallam.github.io",
+  website: "https://ismailbenhallam.github.io",
   linkedin: "https://www.linkedin.com/in/ismailbenhallam",
   linkedinUsername: "ismailbenhallam",
   github: "https://github.com/ismailbenhallam",

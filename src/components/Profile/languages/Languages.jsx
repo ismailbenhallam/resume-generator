@@ -1,38 +1,51 @@
 import { PureComponent } from "react";
-import languages from "../../../data/languages";
+import LanguagesService from "../../../services/languages-service";
 import "./Languages.css";
 
 export default class Languages extends PureComponent {
   constructor(props) {
     super(props);
+    this.service = new LanguagesService();
     this.state = {
       language: "",
       level: "",
+      langagues: {},
     };
-    this.langagues = languages;
   }
+
+  componentDidMount = () => {
+    this.setState({ langagues: this.service.getAll() });
+  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   removeLanguage = (name) => {
-    delete this.langagues[name];
-    this.forceUpdate();
+    // delete this.langagues[name];
+    this.service.removeOne(name);
+    this.setState({ langagues: this.service.getAll() });
   };
 
   addLanguage = (event) => {
     event.preventDefault();
-    if (!this.state.language || !this.state.level) return;
-    this.langagues[this.state.language] = this.state.level;
-    this.setState({ language: "", level: "" });
+    this.service.addOne({
+      [this.state.language]: this.state.level,
+    });
+    // if (!this.state.language || !this.state.level) return;
+    // this.langagues[this.state.language] = this.state.level;
+    this.setState({
+      langagues: this.service.getAll(),
+      language: "",
+      level: "",
+    });
   };
 
   render() {
     return (
       <div className="languages">
         <div className="langagues-list">
-          {Object.entries(this.langagues).map((l) => (
+          {Object.entries(this.state.langagues).map((l) => (
             <div key={l[0]} className="langague">
               <span>{l[0]}</span>
               <span>{l[1]}</span>

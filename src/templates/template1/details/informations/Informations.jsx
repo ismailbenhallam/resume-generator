@@ -12,10 +12,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PureComponent } from "react";
-import informations from "../../../../data/informations";
+import CoordinatesService from "../../../../services/coordinates";
 import "./Informations.css";
 
 export default class Informations extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.service = new CoordinatesService();
+    this.informations = this.service.getAll();
+  }
+
   render() {
     return (
       <div className="informations">
@@ -25,18 +31,18 @@ export default class Informations extends PureComponent {
           style={this.props.iconsStyle}
         />
         <a
-          href={"mailto:" + informations.email}
+          href={"mailto:" + this.informations.email}
           target="_blank"
           rel="noreferrer"
           style={this.props.textStyle}>
-          {informations.email}
+          {this.informations.email}
         </a>
         <FontAwesomeIcon
           className="icon"
           icon={faMapMarkerAlt}
           style={this.props.iconsStyle}
         />
-        <span style={this.props.textStyle}>{informations.address}</span>
+        <span style={this.props.textStyle}>{this.informations.address}</span>
         <FontAwesomeIcon
           className="icon"
           icon={faBirthdayCake}
@@ -44,16 +50,16 @@ export default class Informations extends PureComponent {
         />
         <span style={this.props.textStyle}>
           {this.props.calculateAge
-            ? this.calculateAge(informations.birthDate)
-            : informations.birthDate}
+            ? this.calculateAge(this.informations.birthDate)
+            : this.informations.birthDate}
         </span>
         <FontAwesomeIcon
           className="icon"
           icon={faLinkedin}
           style={this.props.iconsStyle}
         />
-        <a href={informations.linkedin} style={this.props.textStyle}>
-          @{informations.linkedinUsername}
+        <a href={this.informations.linkedin} style={this.props.textStyle}>
+          @{this.informations.linkedinUsername}
         </a>
         <FontAwesomeIcon
           className="icon"
@@ -61,29 +67,31 @@ export default class Informations extends PureComponent {
           style={this.props.iconsStyle}
         />
         <a
-          href={informations.github}
+          href={this.informations.github}
           target="_blank"
           rel="noreferrer"
           style={this.props.textStyle}>
-          @{informations.githubUsername}
+          @{this.informations.githubUsername}
         </a>
         <FontAwesomeIcon
           className="icon"
           icon={faFlag}
           style={this.props.iconsStyle}
         />
-        <span style={this.props.textStyle}>{informations.nationality}</span>
+        <span style={this.props.textStyle}>
+          {this.informations.nationality}
+        </span>
         <FontAwesomeIcon
           className="icon"
           icon={faMobileAlt}
           style={this.props.iconsStyle}
         />
         <a
-          href={"tel:" + informations.mobile}
+          href={"tel:" + this.informations.mobile}
           target="_blank"
           rel="noreferrer"
           style={this.props.textStyle}>
-          {informations.mobile}
+          {this.informations.mobile}
         </a>
         <FontAwesomeIcon
           className="icon"
@@ -91,11 +99,11 @@ export default class Informations extends PureComponent {
           style={this.props.iconsStyle}
         />
         <a
-          href={informations.webSite}
+          href={this.informations.website}
           target="_blank"
           rel="noreferrer"
           style={this.props.textStyle}>
-          {informations.webSite}
+          {this.informations.website}
         </a>
       </div>
     );
