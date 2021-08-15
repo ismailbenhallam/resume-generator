@@ -1,6 +1,7 @@
 import { PureComponent } from "react";
 import capitalize from "../../services/string-utilities";
 import Assets from "./assets/Assets";
+import Certifications from "./certifications/Certifications";
 import Coordinates from "./coordinates/Coordinates";
 import Interests from "./interests/Interests";
 import Languages from "./languages/Languages";
@@ -10,7 +11,7 @@ export default class ProfilePage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLi: "coordinates",
+      selectedLi: "certifications",
     };
     this.elements = [
       "coordinates",
@@ -58,6 +59,7 @@ export default class ProfilePage extends PureComponent {
             {this.state.selectedLi === "languages" && <Languages />}
             {this.state.selectedLi === "assets" && <Assets />}
             {this.state.selectedLi === "interests" && <Interests />}
+            {this.state.selectedLi === "certifications" && <Certifications />}
           </div>
         </div>
         {/* {this.state.selectedLi === "coordinates" && (

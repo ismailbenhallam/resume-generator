@@ -1,10 +1,12 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment } from "react";
-import certifications from "../../../data/certifications.js";
+import CertificationsService from "../../../services/certifications-service.js";
 import "./Certifications.css";
 
 export default function Certifications() {
+  const service = new CertificationsService();
+  const certifications = service.getAll();
   return (
     <>
       <div className="section_title">Certifications</div>

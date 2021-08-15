@@ -29,10 +29,10 @@ export default class Languages extends PureComponent {
 
   addLanguage = (event) => {
     event.preventDefault();
+    if (!this.state.language || !this.state.level) return;
     this.service.addOne({
       [this.state.language]: this.state.level,
     });
-    // if (!this.state.language || !this.state.level) return;
     // this.langagues[this.state.language] = this.state.level;
     this.setState({
       langagues: this.service.getAll(),

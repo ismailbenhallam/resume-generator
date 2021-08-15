@@ -1,5 +1,8 @@
 .template1 .certifications {
   margin: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 .template1 .certification {
