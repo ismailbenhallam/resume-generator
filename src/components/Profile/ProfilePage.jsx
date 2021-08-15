@@ -3,6 +3,8 @@ import capitalize from "../../utilities/capitalize";
 import Assets from "./assets/Assets";
 import Certifications from "./certifications/Certifications";
 import Coordinates from "./coordinates/Coordinates";
+import Education from "./education/Education";
+import Experiences from "./experiences/Experiences";
 import Interests from "./interests/Interests";
 import Languages from "./languages/Languages";
 import PrincipalSkillss from "./principal-skills/PrincipalSkills";
@@ -36,9 +38,9 @@ export default class ProfilePage extends PureComponent {
   render() {
     return (
       <div id="profile-page">
+        <h1>My Profile</h1>
         <div className="grid">
           <div className="informations-tab">
-            {/* <h2>Informations Tab</h2> */}
             <ul>
               {this.elements.map((el) =>
                 this.state.selectedLi === el ? (
@@ -62,6 +64,8 @@ export default class ProfilePage extends PureComponent {
             {this.state.selectedLi === "languages" && <Languages />}
             {this.state.selectedLi === "assets" && <Assets />}
             {this.state.selectedLi === "interests" && <Interests />}
+            {this.state.selectedLi === "experiences" && <Experiences />}
+            {this.state.selectedLi === "education" && <Education />}
             {this.state.selectedLi === "skills" && <Skills />}
             {this.state.selectedLi === "principal skills" && (
               <PrincipalSkillss />

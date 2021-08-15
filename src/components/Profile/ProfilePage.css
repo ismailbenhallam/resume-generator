@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+#profile-page h1 {
+  margin: 20px auto 40px auto;
+}
+
 #profile-page .grid {
   display: grid;
   /* flex-direction: row; */

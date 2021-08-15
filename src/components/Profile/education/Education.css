@@ -1,14 +1,15 @@
-#profile-page .active-tab .langagues-list {
+#profile-page .active-tab .educations-list {
   margin-bottom: 40px;
 }
 
-#profile-page .active-tab .langague {
+#profile-page .active-tab .education {
   display: grid;
-  grid-template-columns: 40% 46% 8%;
+  grid-template-columns: 30% auto 22% 10% 8%;
   margin-bottom: 10px;
+  column-gap: 15px;
 }
 
-#profile-page .active-tab .langague .remove-btn {
+#profile-page .active-tab .educations .remove-btn {
   background-color: red;
   color: aliceblue;
   border: 1px solid;
@@ -18,27 +19,27 @@
   height: max-content;
 }
 
-#profile-page .active-tab .langagues-input-wrapper {
+#profile-page .active-tab .educations-input-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#profile-page .active-tab .languages-input {
+#profile-page .active-tab .educations-input {
   display: grid;
-  grid-template-columns: auto 30% auto 30%;
+  grid-template-columns: max-content 70%;
   row-gap: 10px;
   column-gap: 30px;
   justify-content: center;
   width: 100%;
 }
 
-#profile-page .active-tab .languages input {
-  font-size: 1.4rem;
-}
-
 #profile-page .active-tab .add-btn {
   margin-top: 30px;
   background-color: greenyellow;
+}
+
+#profile-page .active-tab .educations input {
+  font-size: 1.4rem;
 }
