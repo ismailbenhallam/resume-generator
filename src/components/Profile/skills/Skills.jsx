@@ -22,10 +22,10 @@ export default function Skills() {
 
   const addSkill = (event) => {
     event.preventDefault();
-    if (!inputs.title) return;
+    if (!inputs.title.trim()) return;
 
     let details = "";
-    if (inputs.details) {
+    if (inputs.details.trim()) {
       details = inputs.details.split(",");
       details = details.map((d) => capitalize(d.trim()));
     }
@@ -43,17 +43,19 @@ export default function Skills() {
 
   return (
     <div className="skills">
-      <div className="skills-list">
-        {Object.entries(skills).map((l) => (
-          <div key={l[0]} className="skill">
-            <span>{l[0]}</span>
-            <span>{l[1] ? l[1].join(", ") : ""}</span>
-            <button onClick={() => removeSkill(l[0])} className="remove-btn">
-              X
-            </button>
-          </div>
-        ))}
-      </div>
+      {Object.entries(skills).length > 0 && (
+        <div className="skills-list">
+          {Object.entries(skills).map((l) => (
+            <div key={l[0]} className="skill">
+              <span>{l[0]}</span>
+              <span>{l[1] ? l[1].join(", ") : ""}</span>
+              <button onClick={() => removeSkill(l[0])} className="remove-btn">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <form>
         <div className="skills-input-wrapper">
           <div className="skills-input">

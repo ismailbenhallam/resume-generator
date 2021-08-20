@@ -1,5 +1,8 @@
 import { Fragment } from "react";
 import LanguagesService from "../../../../../services/languages-service";
+import Divider from "../../helpers/divider/Divider";
+import Margin from "../../helpers/margin/Margin";
+import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
 import "./Languages.css";
 
 export default function Languages() {
@@ -12,5 +15,15 @@ export default function Languages() {
     </Fragment>
   ));
 
-  return <div className="langagues-grid">{elements}</div>;
+  return elements.length ? (
+    <>
+      <Divider />
+      <DetailsSectionTitle title="Langues" />
+      <Margin value="5px 5px">
+        <div className="langagues-grid">{elements}</div>
+      </Margin>
+    </>
+  ) : (
+    ""
+  );
 }

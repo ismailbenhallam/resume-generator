@@ -5,12 +5,15 @@
   align-items: center;
   width: 25%;
   line-height: 1.8rem;
+  /* TODO: */
+  width: 25%;
 }
 
 .template1.right {
   background-color: whitesmoke;
   height: 100%;
-  /* flex-basis: 5; */
+  /* TODO: */
+  width: 75%;
 }
 
 .template1 .section_title {

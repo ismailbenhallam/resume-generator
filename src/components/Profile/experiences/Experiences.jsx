@@ -33,16 +33,21 @@ export default function Experiences(props) {
 
   const addExperience = (event) => {
     event.preventDefault();
-    if (!inputs.title || !inputs.enterprise || !inputs.period || !inputs.place)
+    if (
+      !inputs.title.trim() ||
+      !inputs.enterprise.trim() ||
+      !inputs.period.trim() ||
+      !inputs.place.trim()
+    )
       return;
 
     service.addOne({
-      period: inputs.period,
-      title: inputs.title,
-      enterprise: inputs.enterprise,
-      place: inputs.place,
-      details: inputs.details,
-      more: inputs.more,
+      period: inputs.period.trim(),
+      title: inputs.title.trim(),
+      enterprise: inputs.enterprise.trim(),
+      place: inputs.place.trim(),
+      details: inputs.details.trim(),
+      more: inputs.more.trim(),
     });
 
     setInputs({
@@ -62,37 +67,39 @@ export default function Experiences(props) {
 
   return (
     <div className="experiences">
-      <div className="experiences-list">
-        {experiences.map((ex, index) => (
-          <Fragment key={ex.title}>
-            <div className="experience">
-              <span className="title">{ex.title}</span>
-              <span className="enterprise">
-                <FontAwesomeIcon icon={faBriefcase} className="icon" />
-                &nbsp;
-                {ex.enterprise}
-              </span>
-              <span className="period">
-                <FontAwesomeIcon icon={faCalendarDay} className="icon" />
-                &nbsp;
-                {ex.period}
-              </span>
-              <button
-                onClick={() => removeExperience(ex)}
-                className="remove-btn">
-                X
-              </button>
-              <span>{ex.details}</span>
-              <span>
-                <FontAwesomeIcon icon={faMapPin} className="icon" />
-                &nbsp;{ex.place}
-              </span>
-              <span>{ex.more}</span>
-            </div>
-            {index + 1 < experiences.length && <hr />}
-          </Fragment>
-        ))}
-      </div>
+      {experiences.length > 0 && (
+        <div className="experiences-list">
+          {experiences.map((ex, index) => (
+            <Fragment key={ex.title}>
+              <div className="experience">
+                <span className="title">{ex.title}</span>
+                <span className="enterprise">
+                  <FontAwesomeIcon icon={faBriefcase} className="icon" />
+                  &nbsp;
+                  {ex.enterprise}
+                </span>
+                <span className="period">
+                  <FontAwesomeIcon icon={faCalendarDay} className="icon" />
+                  &nbsp;
+                  {ex.period}
+                </span>
+                <button
+                  onClick={() => removeExperience(ex)}
+                  className="remove-btn">
+                  X
+                </button>
+                <span>{ex.details}</span>
+                <span>
+                  <FontAwesomeIcon icon={faMapPin} className="icon" />
+                  &nbsp;{ex.place}
+                </span>
+                <span>{ex.more}</span>
+              </div>
+              {index + 1 < experiences.length && <hr />}
+            </Fragment>
+          ))}
+        </div>
+      )}
       <form>
         <div className="experiences-input-wrapper">
           <div className="experiences-input">

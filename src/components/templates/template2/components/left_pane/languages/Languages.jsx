@@ -5,7 +5,7 @@ import "./Languages.css";
 export default function Languages() {
   const service = new LanguagesService();
   let languages = service.getAll();
-  return (
+  return Object.keys(languages).length ? (
     <>
       <SectionTitle title="Langues" />
       <div className="languages">
@@ -17,5 +17,7 @@ export default function Languages() {
         ))}
       </div>
     </>
+  ) : (
+    ""
   );
 }

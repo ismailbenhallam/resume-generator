@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import CoordinatesService from "../../../../../services/coordinates";
 import calculateAge from "../../../../../utilities/calclulateAgeFromStringDate";
 import getUsernameFromNetworkUrl from "../../../../../utilities/getUsernameFromNetworkUrl";
+import Margin from "../../helpers/margin/Margin";
 import "./Informations.css";
 
 export default function Informations(props) {
@@ -26,68 +27,147 @@ export default function Informations(props) {
   } = props;
   const service = new CoordinatesService();
   const informations = service.getAll();
+  const {
+    email,
+    address,
+    birthDate,
+    linkedin,
+    github,
+    nationality,
+    mobile,
+    website,
+  } = informations;
 
-  return (
-    <div className="informations">
-      <FontAwesomeIcon className="icon" icon={faEnvelope} style={iconsStyle} />
-      <a
-        href={"mailto:" + informations.email}
-        target="_blank"
-        rel="noreferrer"
-        style={textStyle}>
-        {informations.email}
-      </a>
-      <FontAwesomeIcon
-        className="icon"
-        icon={faMapMarkerAlt}
-        style={iconsStyle}
-      />
-      <span style={textStyle}>{informations.address}</span>
-      <FontAwesomeIcon
-        className="icon"
-        icon={faBirthdayCake}
-        style={iconsStyle}
-      />
-      <span style={textStyle}>
-        {shouldCalculateAge
-          ? calculateAge(informations.birthDate, ageSuffix)
-          : informations.birthDate}
-      </span>
-      <FontAwesomeIcon className="icon" icon={faLinkedin} style={iconsStyle} />
-      <a href={informations.linkedin} style={textStyle}>
-        @{getUsernameFromNetworkUrl(informations.linkedin)}
-      </a>
-      <FontAwesomeIcon className="icon" icon={faGithub} style={iconsStyle} />
-      <a
-        href={informations.github}
-        target="_blank"
-        rel="noreferrer"
-        style={textStyle}>
-        @{getUsernameFromNetworkUrl(informations.github)}
-      </a>
-      <FontAwesomeIcon className="icon" icon={faFlag} style={iconsStyle} />
-      <span style={textStyle}>{informations.nationality}</span>
-      <FontAwesomeIcon className="icon" icon={faMobileAlt} style={iconsStyle} />
-      <a
-        href={"tel:" + informations.mobile}
-        target="_blank"
-        rel="noreferrer"
-        style={textStyle}>
-        {informations.mobile}
-      </a>
-      <FontAwesomeIcon
-        className="icon"
-        icon={faInternetExplorer}
-        style={iconsStyle}
-      />
-      <a
-        href={informations.website}
-        target="_blank"
-        rel="noreferrer"
-        style={textStyle}>
-        {informations.website}
-      </a>
-    </div>
+  return Object.entries(informations).filter((entry) => {
+    return (
+      (entry[0] === "email" && entry[1]) ||
+      (entry[0] === "address" && entry[1]) ||
+      (entry[0] === "birthDate" && entry[1]) ||
+      (entry[0] === "linkedin" && entry[1]) ||
+      (entry[0] === "github" && entry[1]) ||
+      (entry[0] === "nationality" && entry[1]) ||
+      (entry[0] === "mobile" && entry[1]) ||
+      (entry[0] === "website" && entry[1])
+    );
+  }).length === 0 ? (
+    <></>
+  ) : (
+    <>
+      <Margin value="10px 2px">
+        <div className="informations">
+          {email && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faEnvelope}
+                style={iconsStyle}
+              />
+              <a
+                href={"mailto:" + email}
+                target="_blank"
+                rel="noreferrer"
+                style={textStyle}>
+                {email}
+              </a>
+            </>
+          )}
+          {address && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faMapMarkerAlt}
+                style={iconsStyle}
+              />
+              <span style={textStyle}>{address}</span>
+            </>
+          )}
+          {birthDate && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faBirthdayCake}
+                style={iconsStyle}
+              />
+              <span style={textStyle}>
+                {shouldCalculateAge
+                  ? calculateAge(birthDate, ageSuffix)
+                  : birthDate}
+              </span>
+            </>
+          )}
+          {linkedin && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faLinkedin}
+                style={iconsStyle}
+              />
+              <a href={linkedin} style={textStyle}>
+                @{getUsernameFromNetworkUrl(linkedin)}
+              </a>
+            </>
+          )}
+          {github && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faGithub}
+                style={iconsStyle}
+              />
+              <a
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+                style={textStyle}>
+                @{getUsernameFromNetworkUrl(github)}
+              </a>
+            </>
+          )}
+          {nationality && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faFlag}
+                style={iconsStyle}
+              />
+              <span style={textStyle}>{nationality}</span>
+            </>
+          )}
+          {mobile && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faMobileAlt}
+                style={iconsStyle}
+              />
+              <a
+                href={"tel:" + mobile}
+                target="_blank"
+                rel="noreferrer"
+                style={textStyle}>
+                {mobile}
+              </a>
+            </>
+          )}
+          {website && (
+            <>
+              <FontAwesomeIcon
+                className="icon"
+                icon={faInternetExplorer}
+                style={iconsStyle}
+              />
+              <a
+                href={website}
+                target="_blank"
+                rel="noreferrer"
+                style={textStyle}>
+                {website}
+              </a>
+            </>
+          )}
+        </div>
+      </Margin>
+    </>
   );
 }
 

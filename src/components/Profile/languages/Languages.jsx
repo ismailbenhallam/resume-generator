@@ -21,10 +21,10 @@ export default function Languages() {
 
   const addLanguage = (event) => {
     event.preventDefault();
-    if (!inputs.language || !inputs.level) return;
+    if (!inputs.language.trim() || !inputs.level.trim()) return;
 
     service.addOne({
-      [inputs.language]: inputs.level,
+      [inputs.language.trim()]: inputs.level.trim(),
     });
     setLanguages(service.getAll());
 
@@ -36,21 +36,25 @@ export default function Languages() {
 
   return (
     <div className="languages">
-      <div className="langagues-list">
-        {Object.entries(languages).map((l) => (
-          <div key={l[0]} className="langague">
-            <span>{l[0]}</span>
-            <span>{l[1]}</span>
-            <button onClick={() => removeLanguage(l[0])} className="remove-btn">
-              X
-            </button>
-          </div>
-        ))}
-      </div>
+      {Object.entries(languages).length > 0 && (
+        <div className="langagues-list">
+          {Object.entries(languages).map((l) => (
+            <div key={l[0]} className="langague">
+              <span>{l[0]}</span>
+              <span>{l[1]}</span>
+              <button
+                onClick={() => removeLanguage(l[0])}
+                className="remove-btn">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <form>
         <div className="langagues-input-wrapper">
           <div className="languages-input">
-            <label htmlFor="input-new-language">Language</label>
+            <label htmlFor="input-new-language">Language*</label>
             <input
               id="input-new-language"
               name="language"
@@ -59,7 +63,7 @@ export default function Languages() {
               value={inputs.language}
               required="required"
             />
-            <label htmlFor="input-new-language-level">Level</label>
+            <label htmlFor="input-new-language-level">Level*</label>
             <input
               id="input-new-language-level"
               name="level"

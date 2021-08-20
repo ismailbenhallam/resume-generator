@@ -1,6 +1,5 @@
 import Certifications from "./certifications/Certifications";
 import Details from "./details/Details";
-import Divider from "./helpers/divider/Divider";
 import PhotoAndName from "./photo_and_name/PhotoAndName";
 import Education from "./realizations/education/Education";
 import Experiences from "./realizations/experiences/Experiences";
@@ -16,11 +15,8 @@ export default function Template1() {
       </div>
       <div className="template1 right">
         <Experiences />
-        <Divider />
         <Education />
-        <Divider />
         <Skills />
-        <Divider />
         <Certifications />
       </div>
     </>

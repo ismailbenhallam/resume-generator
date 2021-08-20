@@ -5,7 +5,7 @@ import "./Certifications.css";
 export default function Certifications() {
   const service = new CertificationsService();
   const certifications = service.getAll();
-  return (
+  return Object.entries(certifications).length ? (
     <>
       <SectionTitle title="Certifications" />
       <div className="certifications">
@@ -21,5 +21,7 @@ export default function Certifications() {
         ))}
       </div>
     </>
+  ) : (
+    ""
   );
 }

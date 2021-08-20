@@ -3,10 +3,15 @@ import Realizations from "../Realizations";
 
 export default function Experiences() {
   let service = new ExperiencesService();
+  const experiences = service.getAll();
   return (
-    <Realizations
-      realizations={service.getAll()}
-      title="Expériences professionnelles et projets réalisés"
-    />
+    experiences.length > 0 && (
+      <>
+        <Realizations
+          realizations={service.getAll()}
+          title="Expériences professionnelles et projets réalisés"
+        />
+      </>
+    )
   );
 }

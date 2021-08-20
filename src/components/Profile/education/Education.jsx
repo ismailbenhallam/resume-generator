@@ -4,10 +4,11 @@ import "./Education.css";
 
 export default function Education() {
   const service = new EducationService();
+  const currentYear = new Date().getFullYear();
   const [education, setEducation] = useState(service.getAll());
 
   const [inputs, setInputs] = useState({
-    year: new Date().getFullYear(),
+    year: currentYear,
     title: "",
     school: "",
     place: "",
@@ -26,14 +27,19 @@ export default function Education() {
 
   const addEducation = (event) => {
     event.preventDefault();
-    if (!inputs.title || !inputs.school || !inputs.place || !inputs.year)
+    if (
+      !inputs.title.trim() ||
+      !inputs.school.trim() ||
+      inputs.year > currentYear ||
+      inputs.year < 1970
+    )
       return;
 
     service.addOne({
-      title: inputs.title,
-      school: inputs.school,
-      period: inputs.year,
-      place: inputs.place,
+      title: inputs.title.trim(),
+      school: inputs.school.trim(),
+      period: +inputs.year.trim(),
+      place: inputs.place.trim(),
     });
 
     setInputs({
@@ -48,28 +54,30 @@ export default function Education() {
 
   return (
     <div className="educations">
-      <div className="educations-list">
-        {education.map((educ, index) => (
-          <Fragment key={educ.title}>
-            <div key={educ.title} className="education">
-              <span>{educ.title}</span>
-              <span>{educ.school}</span>
-              <span>{educ.place}</span>
-              <span>{educ.period}</span>
-              <button
-                onClick={() => removeEducation(educ)}
-                className="remove-btn">
-                X
-              </button>
-            </div>
-            {index + 1 < education.length && <hr />}
-          </Fragment>
-        ))}
-      </div>
+      {education.length > 0 && (
+        <div className="educations-list">
+          {education.map((educ, index) => (
+            <Fragment key={educ.title}>
+              <div key={educ.title} className="education">
+                <span>{educ.title}</span>
+                <span>{educ.school}</span>
+                <span>{educ.place}</span>
+                <span>{educ.period}</span>
+                <button
+                  onClick={() => removeEducation(educ)}
+                  className="remove-btn">
+                  X
+                </button>
+              </div>
+              {index + 1 < education.length && <hr />}
+            </Fragment>
+          ))}
+        </div>
+      )}
       <form>
         <div className="langagues-input-wrapper">
           <div className="educations-input">
-            <label htmlFor="input-new-education">Title</label>
+            <label htmlFor="input-new-education">Title*</label>
             <input
               id="input-new-education"
               name="title"
@@ -78,7 +86,7 @@ export default function Education() {
               value={inputs.title}
               required="required"
             />
-            <label htmlFor="input-new-education-level">School</label>
+            <label htmlFor="input-new-education-level">School*</label>
             <input
               id="input-new-education-level"
               name="school"
@@ -87,13 +95,13 @@ export default function Education() {
               value={inputs.school}
               required="required"
             />
-            <label htmlFor="input-new-education-level">Year</label>
+            <label htmlFor="input-new-education-level">Year*</label>
             <input
               id="input-new-education-level"
               name="year"
               type="number"
-              min="1900"
-              max="2099"
+              min={1970}
+              max={currentYear}
               step="1"
               onChange={handleChange}
               value={+inputs.year}
