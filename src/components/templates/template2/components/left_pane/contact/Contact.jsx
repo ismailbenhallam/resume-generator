@@ -6,29 +6,32 @@ import {
 import {
   faBirthdayCake,
   faEnvelope,
+  faMapMarkerAlt,
   faPhoneAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CoordinatesService from "../../../../../../services/coordinates";
+import calculateAge from "../../../../../../utilities/calclulateAgeFromStringDate";
 import getUsernameFromNetworkUrl from "../../../../../../utilities/getUsernameFromNetworkUrl.js";
 import "./Contact.css";
 
-export default function Contact(props) {
+export default function Contact({ shouldCalculateAge, ageSuffix }) {
   const service = new CoordinatesService();
-  const informations = service.getAll();
-
-  const calculateAge = (birthDate) => {
-    const ageDifMs = Date.now() - new Date(birthDate).getTime();
-    const ageDate = new Date(ageDifMs);
-    return (
-      Math.abs(ageDate.getUTCFullYear() - 1970) + " " + props.ageSuffix.trim()
-    );
-  };
+  const {
+    language,
+    mobile,
+    email,
+    birthDate,
+    linkedin,
+    github,
+    website,
+    address,
+  } = service.getAll();
 
   const formatBirthDate = (birthDate) => {
     const d = new Date(birthDate);
     return d
-      .toLocaleDateString(informations.language, {
+      .toLocaleDateString(language, {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -39,32 +42,62 @@ export default function Contact(props) {
 
   return (
     <div className="contact">
-      <FontAwesomeIcon className="icon" icon={faPhoneAlt} />
-      <a href={"tel:" + informations.mobile}>{informations.mobile}</a>
-      <FontAwesomeIcon className="icon" icon={faEnvelope} />
-      <span>{informations.email}</span>
-      <FontAwesomeIcon className="icon" icon={faBirthdayCake} />
-      <span>
-        {props.calculateAge
-          ? calculateAge(informations.birthDate)
-          : formatBirthDate(informations.birthDate)}
-      </span>
-      <FontAwesomeIcon className="icon" icon={faLinkedin} />
-      <a href={informations.linkedin}>
-        @{getUsernameFromNetworkUrl(informations.linkedin)}
-      </a>
-      <FontAwesomeIcon className="icon" icon={faGithub} />
-      <a href={informations.github} target="_blank" rel="noreferrer">
-        @{getUsernameFromNetworkUrl(informations.github)}
-      </a>
-      <FontAwesomeIcon className="icon" icon={faInternetExplorer} />
-      <a href={informations.website} target="_blank" rel="noreferrer">
-        {informations.website}
-      </a>
+      {mobile && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faPhoneAlt} />
+          <a href={"tel:" + mobile} target="_blank" rel="noreferrer">
+            {mobile}
+          </a>
+        </>
+      )}
+      {address && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
+          <span>{address}</span>
+        </>
+      )}
+      {email && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faEnvelope} />
+          <a href={"mailto:" + email} target="_blank" rel="noreferrer">
+            {email}
+          </a>
+        </>
+      )}
+      {birthDate && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faBirthdayCake} />
+          <span>
+            {shouldCalculateAge
+              ? calculateAge(birthDate, ageSuffix)
+              : formatBirthDate(birthDate)}
+          </span>
+        </>
+      )}
+      {linkedin && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faLinkedin} />
+          <a href={linkedin} target="_blank" rel="noreferrer">
+            @{getUsernameFromNetworkUrl(linkedin)}
+          </a>
+        </>
+      )}
+      {github && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faGithub} />
+          <a href={github} target="_blank" rel="noreferrer">
+            @{getUsernameFromNetworkUrl(github)}
+          </a>
+        </>
+      )}
+      {website && (
+        <>
+          <FontAwesomeIcon className="icon" icon={faInternetExplorer} />
+          <a href={website} target="_blank" rel="noreferrer">
+            {website}
+          </a>
+        </>
+      )}
     </div>
   );
 }
-
-Contact.defaultProps = {
-  ageSuffix: "",
-};

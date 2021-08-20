@@ -13,7 +13,9 @@ function App() {
     template2: <Template2 />,
   };
 
-  const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
+  const [selectedTemplate, setSelectedTemplate] = useState(
+    Object.entries(templates)[1][1]
+  );
 
   const handleChangeTemplate = (event) => {
     setSelectedTemplate(templates[event.target.value]);

@@ -7,7 +7,7 @@ import Skills from "./skills/Skills";
 export default function LeftPane() {
   return (
     <div className="left-pane">
-      <Contact calculateAge={true} ageSuffix="ans" />
+      <Contact shouldCalculateAge={true} ageSuffix="ans" />
       <Skills />
       <Languages />
       <Certifications />

@@ -28,8 +28,8 @@ export default function Interests() {
 
   const addInterest = (event) => {
     event.preventDefault();
-    if (!state.interest) return;
-    interestsService.addOne(state.interest);
+    if (!state.interest.trim()) return;
+    interestsService.addOne(state.interest.trim());
     setState({
       interests: interestsService.getAll(),
       interest: "",
@@ -38,16 +38,18 @@ export default function Interests() {
 
   return (
     <div className="interests">
-      <div className="interests-list">
-        {state.interests.map((i) => (
-          <div key={i} className="interest">
-            <span>{i}</span>
-            <button onClick={() => removeInterest(i)} className="remove-btn">
-              X
-            </button>
-          </div>
-        ))}
-      </div>
+      {state.interests.length > 0 && (
+        <div className="interests-list">
+          {state.interests.map((i) => (
+            <div key={i} className="interest">
+              <span>{i}</span>
+              <button onClick={() => removeInterest(i)} className="remove-btn">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <form>
         <div className="interests-input-wrapper">
           <div className="interests-input">

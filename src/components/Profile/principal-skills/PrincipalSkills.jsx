@@ -27,18 +27,20 @@ export default function PrincipalSkillss() {
 
   return (
     <div className="principalSkills">
-      <div className="principalSkills-list">
-        {principalSkills.map((skill) => (
-          <div key={skill} className="principalSkill">
-            <span>{skill}</span>
-            <button
-              onClick={() => removePrincipalSkills(skill)}
-              className="remove-btn">
-              X
-            </button>
-          </div>
-        ))}
-      </div>
+      {principalSkills.length > 0 && (
+        <div className="principalSkills-list">
+          {principalSkills.map((skill) => (
+            <div key={skill} className="principalSkill">
+              <span>{skill}</span>
+              <button
+                onClick={() => removePrincipalSkills(skill)}
+                className="remove-btn">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <form className="principalSkills-input-wrapper">
         <div className="principalSkills-input">
           <label htmlFor="input-new-principalSkills">Principal Skill</label>

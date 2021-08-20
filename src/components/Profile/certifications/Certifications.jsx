@@ -22,11 +22,11 @@ export default function Certifications(props) {
 
   const addCertification = (event) => {
     event.preventDefault();
-    if (!inputs.certification || !inputs.url) return;
+    if (!inputs.certification.trim() || !inputs.url.trim()) return;
     service.addOne({
-      name: inputs.certification,
-      organization: inputs.organization,
-      url: inputs.url,
+      name: inputs.certification.trim(),
+      organization: inputs.organization.trim(),
+      url: inputs.url.trim(),
     });
     setInputs({
       url: "",

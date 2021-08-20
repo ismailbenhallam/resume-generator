@@ -7,6 +7,8 @@
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
+  border: 2px saddlebrown solid;
+  border-radius: 5px;
 }
 
 #profile-page h1 {
@@ -51,5 +53,4 @@
 /* Active tab */
 #profile-page .active-tab {
   width: 100%;
-  /* background-color: azure; */
 }

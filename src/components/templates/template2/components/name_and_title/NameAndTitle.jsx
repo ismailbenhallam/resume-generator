@@ -4,16 +4,20 @@ import "./NameAndTitle.css";
 
 export default function NameAndTitle() {
   const service = new CoordinatesService();
-  let informations = service.getAll();
+  let { firstName, lastName, title } = service.getAll();
   return (
     <div className="name-and-title">
       <div className="name">
-        {capitalize(informations.firstName) +
-          " " +
-          informations.lastName.toUpperCase()}
+        {(firstName ? `${capitalize(firstName)} ` : ``) +
+          (lastName ? lastName.toUpperCase() : ``)}
+        {!firstName && !lastName && `can you tell us your name please?`}
       </div>
-      <hr />
-      <div className="title">{informations.title}</div>
+      {title && (
+        <>
+          <hr />
+          <div className="title">{title}</div>
+        </>
+      )}
     </div>
   );
 }

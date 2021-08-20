@@ -5,7 +5,7 @@ import "./Skills.css";
 export default function Skills() {
   const service = new PrincipalSkillsService();
   const principalSkills = service.getAll();
-  return (
+  return principalSkills.length ? (
     <div className="skills">
       <SectionTitle title="Competences" />
       <div className="skills-wrapper">
@@ -14,5 +14,7 @@ export default function Skills() {
         ))}
       </div>
     </div>
+  ) : (
+    ""
   );
 }

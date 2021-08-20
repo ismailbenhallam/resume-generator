@@ -1,12 +1,19 @@
 import EducationService from "../../../../../services/education-service";
+import Divider from "../../helpers/divider/Divider";
 import Realizations from "../Realizations";
 
 export default function Education() {
-  let service = new EducationService();
+  const service = new EducationService();
+  const education = service.getAll();
   return (
-    <Realizations
-      realizations={service.getAll()}
-      title="Diplômes et Formations"
-    />
+    education.length > 0 && (
+      <>
+        <Divider />
+        <Realizations
+          realizations={service.getAll()}
+          title="Diplômes et Formations"
+        />
+      </>
+    )
   );
 }

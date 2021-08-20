@@ -1,9 +1,22 @@
 import InterestsService from "../../../../../services/interests-service";
+import Divider from "../../helpers/divider/Divider";
+import Margin from "../../helpers/margin/Margin";
+import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
 import "./Interests.css";
 
 export default function Interests() {
   let service = new InterestsService();
   let interests = service.getAll();
   let elements = interests.map((a) => <span key={a}>{a}</span>);
-  return <div className="interests-wrapper">{elements}</div>;
+  return elements.length ? (
+    <>
+      <Divider />
+      <DetailsSectionTitle title="Centres d'intérêt" />
+      <Margin value="5px 15px">
+        <div className="interests-wrapper">{elements}</div>
+      </Margin>
+    </>
+  ) : (
+    ""
+  );
 }

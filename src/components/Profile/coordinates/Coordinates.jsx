@@ -18,7 +18,7 @@ const Coordinates = () => {
     event.preventDefault();
     Object.entries(inputs).forEach((entry) => {
       service.addOne({
-        [entry[0]]: entry[1],
+        [entry[0]]: entry[1].trim(),
       });
     });
   };

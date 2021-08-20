@@ -27,8 +27,8 @@ export default function Assets() {
 
   const addAsset = (event) => {
     event.preventDefault();
-    if (!state.asset) return;
-    assetsService.addOne(state.asset);
+    if (!state.asset.trim()) return;
+    assetsService.addOne(state.asset.trim());
 
     setState({
       assets: assetsService.getAll(),
@@ -38,16 +38,18 @@ export default function Assets() {
 
   return (
     <div className="assets">
-      <div className="assets-list">
-        {state.assets.map((a) => (
-          <div key={a} className="asset">
-            <span>{a}</span>
-            <button onClick={() => removeAsset(a)} className="remove-btn">
-              X
-            </button>
-          </div>
-        ))}
-      </div>
+      {state.assets.length > 0 && (
+        <div className="assets-list">
+          {state.assets.map((a) => (
+            <div key={a} className="asset">
+              <span>{a}</span>
+              <button onClick={() => removeAsset(a)} className="remove-btn">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <form>
         <div className="assets-input-wrapper">
           <div className="assets-input">
