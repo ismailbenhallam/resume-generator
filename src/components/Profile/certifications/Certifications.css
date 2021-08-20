@@ -1,9 +1,10 @@
 /* Langagues */
 #profile-page .active-tab .certification {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 70% max-content;
   row-gap: 20px;
   margin-bottom: 40px;
+  justify-content: space-between;
 }
 
 #profile-page .active-tab .certification .remove-btn {
@@ -14,6 +15,7 @@
   font-size: 1rem;
   cursor: pointer;
   height: max-content;
+  justify-self: flex-end;
 }
 
 #profile-page .active-tab .certifications-input-wrapper {

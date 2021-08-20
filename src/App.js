@@ -1,85 +1,56 @@
 import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PureComponent } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./App.css";
 import ProfilePage from "./components/Profile/ProfilePage";
-import Template1 from "./templates/template1/Template1";
-import Template2 from "./templates/template2/Template2";
+import Template1 from "./components/templates/template1/Template1";
+import Template2 from "./components/templates/template2/Template2";
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      templates: {
-        template1: <Template1 />,
-        template2: <Template2 />,
-      },
-    };
-    this.state.selectedTemplate = this.state.templates.template1;
-  }
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/profile">
-            <ProfilePage />
-            <Link to="/">Voir</Link>
-          </Route>
-          <Route path="/">
-            <Link to="/profile">Profile</Link>
-            <select onChange={this.handleChangeTemplate}>
-              {Object.entries(this.state.templates).map((entry) => (
-                <option key={entry[0]} value={entry[0]}>
-                  {entry[0]}
-                </option>
-              ))}
-            </select>
-            <div className="save-button-wrapper">
-              <button
-                className="save-button"
-                tabIndex={1}
-                onClick={() => window.print()}>
-                Save as PDF&nbsp;
-                <FontAwesomeIcon icon={faFilePdf} className="icon" />
-              </button>
-            </div>
-            <div id="resume" className="container">
-              {this.state.selectedTemplate}
-            </div>
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
-
-  handleChangeTemplate = (event) => {
-    this.setState({
-      selectedTemplate: this.state.templates[event.target.value],
-    });
+function App() {
+  const templates = {
+    template1: <Template1 />,
+    template2: <Template2 />,
   };
+
+  const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
+
+  const handleChangeTemplate = (event) => {
+    setSelectedTemplate(templates[event.target.value]);
+  };
+
+  return (
+    <Router>
+      <Switch>
+        <Route path="/profile">
+          <ProfilePage />
+          <Link to="/">Voir</Link>
+        </Route>
+        <Route path="/">
+          <Link to="/profile">Profile</Link>
+          <select onChange={handleChangeTemplate}>
+            {Object.entries(templates).map((entry) => (
+              <option key={entry[0]} value={entry[0]}>
+                {entry[0]}
+              </option>
+            ))}
+          </select>
+          <div className="save-button-wrapper">
+            <button
+              className="save-button"
+              tabIndex={1}
+              onClick={() => window.print()}>
+              Save as PDF&nbsp;
+              <FontAwesomeIcon icon={faFilePdf} className="icon" />
+            </button>
+          </div>
+          <div id="resume" className="container">
+            {selectedTemplate}
+          </div>
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
-// class ErrorBoundaries extends PureComponent {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       hasError: false,
-//     };
-//   }
-
-//   render() {
-//     return !this.state.hasError ? (
-//       <div>{this.props.children}</div>
-//     ) : (
-//       <div>Error</div>
-//     );
-//   }
-
-//   static getDerivedStateFromError() {
-//     return {
-//       hasError: true,
-//     };
-//   }
-// }
 export default App;

@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import { useState } from "react";
 import capitalize from "../../utilities/capitalize";
 import Assets from "./assets/Assets";
 import Certifications from "./certifications/Certifications";
@@ -11,72 +11,60 @@ import PrincipalSkillss from "./principal-skills/PrincipalSkills";
 import "./ProfilePage.css";
 import Skills from "./skills/Skills";
 
-export default class ProfilePage extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.elements = [
-      "coordinates",
-      "languages",
-      "assets",
-      "interests",
-      "experiences",
-      "education",
-      "skills",
-      "principal skills",
-      "certifications",
-    ];
-    this.state = {
-      selectedLi: this.elements[0],
-    };
-  }
+export default function ProfilePage(props) {
+  const elements = [
+    "coordinates",
+    "languages",
+    "assets",
+    "interests",
+    "experiences",
+    "education",
+    "skills",
+    "principal skills",
+    "certifications",
+  ];
+  const [selectedLi, setSelectedState] = useState(elements[0]);
 
-  handleLiClick = (event) => {
+  const handleLiClick = (event) => {
     event.preventDefault();
-    this.setState({ selectedLi: event.target.dataset["name"] });
+    setSelectedState(event.target.dataset["name"]);
   };
 
-  render() {
-    return (
-      <div id="profile-page">
-        <h1>My Profile</h1>
-        <div className="grid">
-          <div className="informations-tab">
-            <ul>
-              {this.elements.map((el) =>
-                this.state.selectedLi === el ? (
-                  <li
-                    key={el}
-                    onClick={this.handleLiClick}
-                    data-name={el}
-                    className="active">
-                    {capitalize(el)}
-                  </li>
-                ) : (
-                  <li key={el} onClick={this.handleLiClick} data-name={el}>
-                    {capitalize(el)}
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-          <div className="active-tab">
-            {this.state.selectedLi === "coordinates" && <Coordinates />}
-            {this.state.selectedLi === "languages" && <Languages />}
-            {this.state.selectedLi === "assets" && <Assets />}
-            {this.state.selectedLi === "interests" && <Interests />}
-            {this.state.selectedLi === "experiences" && <Experiences />}
-            {this.state.selectedLi === "education" && <Education />}
-            {this.state.selectedLi === "skills" && <Skills />}
-            {this.state.selectedLi === "principal skills" && (
-              <PrincipalSkillss />
+  return (
+    <div id="profile-page">
+      <h1>My Profile</h1>
+      <div className="grid">
+        <div className="informations-tab">
+          <ul>
+            {elements.map((el) =>
+              selectedLi === el ? (
+                <li
+                  key={el}
+                  onClick={handleLiClick}
+                  data-name={el}
+                  className="active">
+                  {capitalize(el)}
+                </li>
+              ) : (
+                <li key={el} onClick={handleLiClick} data-name={el}>
+                  {capitalize(el)}
+                </li>
+              )
             )}
-            {this.state.selectedLi === "certifications" && <Certifications />}
-          </div>
+          </ul>
         </div>
-        {/* {this.state.selectedLi === "coordinates" && (
-          <button className="save-btn">Save</button>
-        )} */}
+        <div className="active-tab">
+          {selectedLi === "coordinates" && <Coordinates />}
+          {selectedLi === "languages" && <Languages />}
+          {selectedLi === "assets" && <Assets />}
+          {selectedLi === "interests" && <Interests />}
+          {selectedLi === "experiences" && <Experiences />}
+          {selectedLi === "education" && <Education />}
+          {selectedLi === "skills" && <Skills />}
+          {selectedLi === "principal skills" && <PrincipalSkillss />}
+          {selectedLi === "certifications" && <Certifications />}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }

@@ -5,6 +5,7 @@
 #profile-page .active-tab .langague {
   display: grid;
   grid-template-columns: 40% 46% 8%;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 

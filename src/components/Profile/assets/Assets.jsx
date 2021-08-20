@@ -1,85 +1,71 @@
-import { Component } from "react";
+import { useState } from "react";
 import AssetsService from "../../../services/assets-service";
 import "./Assets.css";
 
-export default class Assets extends Component {
-  constructor(props) {
-    super(props);
-    this.assetsService = new AssetsService();
-    this.state = {
-      asset: "",
-      assets: [],
-    };
-  }
+export default function Assets() {
+  const assetsService = new AssetsService();
+  const [state, setState] = useState({
+    asset: "",
+    assets: assetsService.getAll(),
+  });
 
-  componentDidMount = () => {
-    this.setState({
-      assets: this.assetsService.getAll(),
+  const handleChange = (event) => {
+    setState((oldState) => {
+      return { ...oldState, [event.target.name]: event.target.value };
     });
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  removeAsset = (a) => {
-    // let index = this.state.assets.indexOf(a);
-    // let array = [...this.state.assets];
-    // array.splice(index, 1);
-    this.assetsService.removeOne(a);
-    this.setState({
-      assets: this.assetsService.getAll(),
+  const removeAsset = (a) => {
+    assetsService.removeOne(a);
+    setState((old) => {
+      return {
+        ...old,
+        assets: assetsService.getAll(),
+      };
     });
   };
 
-  addAsset = (event) => {
+  const addAsset = (event) => {
     event.preventDefault();
-    if (!this.state.asset) return;
-    // console.log(this.state.asset);
-    // let a = this.state.assets;
-    // a.push(this.state.asset);
-    this.assetsService.addOne(this.state.asset);
+    if (!state.asset) return;
+    assetsService.addOne(state.asset);
 
-    this.setState({
-      assets: this.assetsService.getAll(),
+    setState({
+      assets: assetsService.getAll(),
       asset: "",
     });
   };
 
-  render() {
-    return (
-      <div className="assets">
-        <div className="assets-list">
-          {this.state.assets.map((a) => (
-            <div key={a} className="asset">
-              <span>{a}</span>
-              <button
-                onClick={() => this.removeAsset(a)}
-                className="remove-btn">
-                X
-              </button>
-            </div>
-          ))}
-        </div>
-        <form>
-          <div className="assets-input-wrapper">
-            <div className="assets-input">
-              <label htmlFor="input-new-asset">Asset</label>
-              <input
-                id="input-new-asset"
-                name="asset"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.asset}
-                required="required"
-              />
-            </div>
-            <button onClick={this.addAsset} className="add-btn">
-              Add
+  return (
+    <div className="assets">
+      <div className="assets-list">
+        {state.assets.map((a) => (
+          <div key={a} className="asset">
+            <span>{a}</span>
+            <button onClick={() => removeAsset(a)} className="remove-btn">
+              X
             </button>
           </div>
-        </form>
+        ))}
       </div>
-    );
-  }
+      <form>
+        <div className="assets-input-wrapper">
+          <div className="assets-input">
+            <label htmlFor="input-new-asset">Asset</label>
+            <input
+              id="input-new-asset"
+              name="asset"
+              type="text"
+              onChange={handleChange}
+              value={state.asset}
+              required="required"
+            />
+          </div>
+          <button onClick={addAsset} className="add-btn">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
