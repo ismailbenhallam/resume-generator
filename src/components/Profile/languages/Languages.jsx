@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import LanguagesService from "../../../services/languages-service";
+import capitalize from "../../../utilities/capitalize";
 import "./Languages.css";
 
 export default function Languages() {
+  const { t } = useTranslation();
   const service = new LanguagesService();
   const [languages, setLanguages] = useState(service.getAll());
   const [inputs, setInputs] = useState({
@@ -54,7 +57,9 @@ export default function Languages() {
       <form>
         <div className="langagues-input-wrapper">
           <div className="languages-input">
-            <label htmlFor="input-new-language">Language*</label>
+            <label htmlFor="input-new-language">
+              {capitalize(t("language"))}*
+            </label>
             <input
               id="input-new-language"
               name="language"
@@ -63,7 +68,9 @@ export default function Languages() {
               value={inputs.language}
               required="required"
             />
-            <label htmlFor="input-new-language-level">Level*</label>
+            <label htmlFor="input-new-language-level">
+              {capitalize(t("level"))}*
+            </label>
             <input
               id="input-new-language-level"
               name="level"
@@ -74,7 +81,7 @@ export default function Languages() {
             />
           </div>
           <button onClick={addLanguage} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

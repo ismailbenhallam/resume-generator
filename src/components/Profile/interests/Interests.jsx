@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import InterestsService from "../../../services/interests-service";
+import capitalize from "../../../utilities/capitalize";
 import "./Interests.css";
 
 export default function Interests() {
+  const { t } = useTranslation();
   const interestsService = new InterestsService();
   const [state, setState] = useState({
     interest: "",
@@ -53,7 +56,9 @@ export default function Interests() {
       <form>
         <div className="interests-input-wrapper">
           <div className="interests-input">
-            <label htmlFor="input-new-interest">Interest</label>
+            <label htmlFor="input-new-interest">
+              {capitalize(t("interest"))}
+            </label>
             <input
               id="input-new-interest"
               name="interest"
@@ -64,7 +69,7 @@ export default function Interests() {
             />
           </div>
           <button onClick={addInterest} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

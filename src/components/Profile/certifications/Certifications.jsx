@@ -1,8 +1,11 @@
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import CertificationsService from "../../../services/certifications-service";
+import capitalize from "../../../utilities/capitalize";
 import "./Certifications.css";
 
 export default function Certifications(props) {
+  const { t } = useTranslation();
   const service = new CertificationsService();
   const [certifications, setCertifications] = useState(service.getAll());
   const [inputs, setInputs] = useState({
@@ -60,7 +63,9 @@ export default function Certifications(props) {
       <form>
         <div className="certifications-input-wrapper">
           <div className="certifications-input">
-            <label htmlFor="input-new-certification">Name*</label>
+            <label htmlFor="input-new-certification">
+              {capitalize(t("name"))}*
+            </label>
             <input
               id="input-new-certification"
               name="certification"
@@ -69,7 +74,9 @@ export default function Certifications(props) {
               value={inputs.certification}
               required="required"
             />
-            <label htmlFor="input-new-certification-level">Organization</label>
+            <label htmlFor="input-new-certification-level">
+              {capitalize(t("organization"))}
+            </label>
             <input
               id="input-new-certification-level"
               name="organization"
@@ -88,7 +95,7 @@ export default function Certifications(props) {
             />
           </div>
           <button onClick={addCertification} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

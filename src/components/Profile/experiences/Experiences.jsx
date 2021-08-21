@@ -5,10 +5,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import ExperiencesService from "../../../services/experiences-service";
+import capitalize from "../../../utilities/capitalize";
 import "./Experiences.css";
 
-export default function Experiences(props) {
+export default function Experiences() {
+  const { t } = useTranslation();
   const service = new ExperiencesService();
   const [inputs, setInputs] = useState({
     title: "",
@@ -61,8 +64,6 @@ export default function Experiences(props) {
     });
 
     setExperiences(service.getAll());
-
-    console.log("Koo");
   };
 
   return (
@@ -103,7 +104,9 @@ export default function Experiences(props) {
       <form>
         <div className="experiences-input-wrapper">
           <div className="experiences-input">
-            <label htmlFor="input-new-experience-title">Title*</label>
+            <label htmlFor="input-new-experience-title">
+              {capitalize(t("title"))}*
+            </label>
             <input
               id="input-new-experience-title"
               name="title"
@@ -112,7 +115,9 @@ export default function Experiences(props) {
               value={inputs.title}
               required="required"
             />
-            <label htmlFor="input-new-experience-period">Period*</label>
+            <label htmlFor="input-new-experience-period">
+              {capitalize(t("period"))}*
+            </label>
             <input
               id="input-new-experience-period"
               name="period"
@@ -121,7 +126,9 @@ export default function Experiences(props) {
               value={inputs.period}
               required="required"
             />
-            <label htmlFor="input-new-experience-enterprise">Enterprise*</label>
+            <label htmlFor="input-new-experience-enterprise">
+              {capitalize(t("enterprise"))}*
+            </label>
             <input
               id="input-new-experience-enterprise"
               name="enterprise"
@@ -130,7 +137,7 @@ export default function Experiences(props) {
               value={inputs.enterprise}
               required="required"
             />
-            <label htmlFor="input-new-place">Place*</label>
+            <label htmlFor="input-new-place">{capitalize(t("place"))}*</label>
             <input
               id="input-new-experience-place"
               name="place"
@@ -139,7 +146,9 @@ export default function Experiences(props) {
               value={inputs.place}
               required="required"
             />
-            <label htmlFor="input-new-experience-details">Details</label>
+            <label htmlFor="input-new-experience-details">
+              {capitalize(t("details"))}
+            </label>
             <input
               id="input-new-experience-details"
               name="details"
@@ -147,7 +156,9 @@ export default function Experiences(props) {
               onChange={handleChange}
               value={inputs.details}
             />
-            <label htmlFor="input-new-experience-more">More</label>
+            <label htmlFor="input-new-experience-more">
+              {capitalize(t("more"))}
+            </label>
             <input
               id="input-new-experience-more"
               name="more"
@@ -157,7 +168,7 @@ export default function Experiences(props) {
             />
           </div>
           <button onClick={addExperience} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

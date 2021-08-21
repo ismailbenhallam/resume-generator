@@ -1,3 +1,4 @@
+import capitalize from "../../../../../../utilities/capitalize";
 import SectionTitle from "../../section-title/SectionTitle";
 import "./Realizations.css";
 
@@ -6,7 +7,7 @@ export default function Realizations(props) {
     <>
       {props.realizations && props.realizations.length > 0 && (
         <>
-          <SectionTitle title={props.title} />
+          <SectionTitle title={capitalize(props.title)} />
           <div className="realizations">
             {props.realizations.map((r) => (
               <div key={r.title} className="realization">
