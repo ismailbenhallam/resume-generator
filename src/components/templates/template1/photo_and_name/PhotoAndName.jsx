@@ -6,7 +6,7 @@ export default function PhotoAndName() {
   return (
     <div className="photo-wrapper">
       <img src={photo} alt="Supposed to be me :/" />
-      <NameAndTitle title="jhkbf" />
+      <NameAndTitle />
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import AssetsService from "../../../services/assets-service";
+import capitalize from "../../../utilities/capitalize";
 import "./Assets.css";
 
 export default function Assets() {
+  const { t } = useTranslation();
   const assetsService = new AssetsService();
   const [state, setState] = useState({
     asset: "",
@@ -53,7 +56,7 @@ export default function Assets() {
       <form>
         <div className="assets-input-wrapper">
           <div className="assets-input">
-            <label htmlFor="input-new-asset">Asset</label>
+            <label htmlFor="input-new-asset">{capitalize(t("asset"))}</label>
             <input
               id="input-new-asset"
               name="asset"
@@ -64,7 +67,7 @@ export default function Assets() {
             />
           </div>
           <button onClick={addAsset} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

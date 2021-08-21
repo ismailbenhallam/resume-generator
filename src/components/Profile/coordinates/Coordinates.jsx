@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import CoordinatesService from "../../../services/coordinates";
+import capitalize from "../../../utilities/capitalize";
 import "./Coordinates.css";
 
 const Coordinates = () => {
+  const { t } = useTranslation();
   const service = new CoordinatesService();
   const [inputs, setInputs] = useState({
     ...service.getAll(),
@@ -26,7 +29,7 @@ const Coordinates = () => {
   return (
     <form className="coordinates-form">
       <div className="coordinates">
-        <label htmlFor="input-firstName">First Name</label>
+        <label htmlFor="input-firstName">{capitalize(t("first name"))}</label>
         <input
           id="input-firstName"
           name="firstName"
@@ -34,7 +37,7 @@ const Coordinates = () => {
           value={inputs.firstName}
           onChange={handleChange}
         />
-        <label htmlFor="input-lastName">Last Name</label>
+        <label htmlFor="input-lastName">{capitalize(t("last name"))}</label>
         <input
           id="input-lastName"
           name="lastName"
@@ -42,7 +45,7 @@ const Coordinates = () => {
           value={inputs.lastName}
           onChange={handleChange}
         />
-        <label htmlFor="input-title">Title</label>
+        <label htmlFor="input-title">{capitalize(t("title"))}</label>
         <input
           id="input-title"
           name="title"
@@ -50,7 +53,7 @@ const Coordinates = () => {
           value={inputs.title}
           onChange={handleChange}
         />
-        <label htmlFor="input-email">Email</label>
+        <label htmlFor="input-email">{capitalize(t("email"))}</label>
         <input
           id="input-email"
           name="email"
@@ -58,7 +61,7 @@ const Coordinates = () => {
           value={inputs.email}
           onChange={handleChange}
         />
-        <label htmlFor="input-mobile">Mobile</label>
+        <label htmlFor="input-mobile">{capitalize(t("mobile"))}</label>
         <input
           id="input-mobile"
           name="mobile"
@@ -66,7 +69,7 @@ const Coordinates = () => {
           value={inputs.mobile}
           onChange={handleChange}
         />
-        <label htmlFor="input-address">Address</label>
+        <label htmlFor="input-address">{capitalize(t("address"))}</label>
         <input
           id="input-address"
           name="address"
@@ -74,7 +77,7 @@ const Coordinates = () => {
           value={inputs.address}
           onChange={handleChange}
         />
-        <label htmlFor="input-birthDate">Birth Date</label>
+        <label htmlFor="input-birthDate">{capitalize(t("birth Date"))}</label>
         <input
           id="input-birthDate"
           name="birthDate"
@@ -82,7 +85,7 @@ const Coordinates = () => {
           value={inputs.birthDate}
           onChange={handleChange}
         />
-        <label htmlFor="input-website">Website</label>
+        <label htmlFor="input-website">{capitalize(t("website"))}</label>
         <input
           id="input-website"
           name="website"
@@ -106,7 +109,9 @@ const Coordinates = () => {
           value={inputs.linkedin}
           onChange={handleChange}
         />
-        <label htmlFor="input-nationality">Nationality</label>
+        <label htmlFor="input-nationality">
+          {capitalize(t("nationality"))}
+        </label>
         <input
           id="input-nationality"
           name="nationality"
@@ -116,7 +121,7 @@ const Coordinates = () => {
         />
       </div>
       <button className="save-btn" onClick={save}>
-        Save
+        {capitalize(t("save"))}
       </button>
     </form>
   );

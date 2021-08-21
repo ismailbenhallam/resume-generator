@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import SkillsService from "../../../services/skills-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Skills.css";
 
 export default function Skills() {
+  const { t } = useTranslation();
   const service = new SkillsService();
   const [inputs, setInputs] = useState({
     title: "",
@@ -59,7 +61,7 @@ export default function Skills() {
       <form>
         <div className="skills-input-wrapper">
           <div className="skills-input">
-            <label htmlFor="input-new-skill">Skill*</label>
+            <label htmlFor="input-new-skill">{capitalize(t("skill"))}*</label>
             <input
               id="input-new-skill"
               name="title"
@@ -69,7 +71,10 @@ export default function Skills() {
               required="required"
             />
             <label htmlFor="input-new-skill-level">
-              Details (comma separated)
+              {capitalize(t("details")) +
+                " (" +
+                t("comma separated values") +
+                ")"}
             </label>
             <input
               id="input-new-skill-level"
@@ -80,7 +85,7 @@ export default function Skills() {
             />
           </div>
           <button onClick={addSkill} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>

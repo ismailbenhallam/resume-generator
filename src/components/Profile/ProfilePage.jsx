@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import capitalize from "../../utilities/capitalize";
 import Assets from "./assets/Assets";
 import Certifications from "./certifications/Certifications";
@@ -11,8 +12,9 @@ import PrincipalSkillss from "./principal-skills/PrincipalSkills";
 import "./ProfilePage.css";
 import Skills from "./skills/Skills";
 
-export default function ProfilePage(props) {
-  const elements = [
+export default function ProfilePage() {
+  const { t } = useTranslation();
+  const keyElements = [
     "coordinates",
     "languages",
     "assets",
@@ -23,46 +25,49 @@ export default function ProfilePage(props) {
     "principal skills",
     "certifications",
   ];
-  const [selectedLi, setSelectedState] = useState(elements[0]);
+
+  let elements = keyElements.map((el) => t(el));
+
+  const [selectedKey, setSelectedKey] = useState(keyElements[0]);
 
   const handleLiClick = (event) => {
     event.preventDefault();
-    setSelectedState(event.target.dataset["name"]);
+    setSelectedKey(event.target.dataset["key"]);
   };
 
   return (
     <div id="profile-page">
-      <h1>My Profile</h1>
+      <h1>{t("My Profile")}</h1>
       <div className="grid">
         <div className="informations-tab">
           <ul>
-            {elements.map((el) =>
-              selectedLi === el ? (
+            {keyElements.map((key, index) =>
+              selectedKey === key ? (
                 <li
-                  key={el}
+                  key={key}
                   onClick={handleLiClick}
-                  data-name={el}
+                  data-key={key}
                   className="active">
-                  {capitalize(el)}
+                  {capitalize(elements[index])}
                 </li>
               ) : (
-                <li key={el} onClick={handleLiClick} data-name={el}>
-                  {capitalize(el)}
+                <li key={key} onClick={handleLiClick} data-key={key}>
+                  {capitalize(elements[index])}
                 </li>
               )
             )}
           </ul>
         </div>
         <div className="active-tab">
-          {selectedLi === "coordinates" && <Coordinates />}
-          {selectedLi === "languages" && <Languages />}
-          {selectedLi === "assets" && <Assets />}
-          {selectedLi === "interests" && <Interests />}
-          {selectedLi === "experiences" && <Experiences />}
-          {selectedLi === "education" && <Education />}
-          {selectedLi === "skills" && <Skills />}
-          {selectedLi === "principal skills" && <PrincipalSkillss />}
-          {selectedLi === "certifications" && <Certifications />}
+          {selectedKey === "coordinates" && <Coordinates />}
+          {selectedKey === "languages" && <Languages />}
+          {selectedKey === "assets" && <Assets />}
+          {selectedKey === "interests" && <Interests />}
+          {selectedKey === "experiences" && <Experiences />}
+          {selectedKey === "education" && <Education />}
+          {selectedKey === "skills" && <Skills />}
+          {selectedKey === "principal skills" && <PrincipalSkillss />}
+          {selectedKey === "certifications" && <Certifications />}
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import { Fragment, useState } from "react";
+import { useTranslation } from "react-i18next";
 import EducationService from "../../../services/education-service.js";
+import capitalize from "../../../utilities/capitalize.js";
 import "./Education.css";
 
 export default function Education() {
+  const { t } = useTranslation();
   const service = new EducationService();
   const currentYear = new Date().getFullYear();
   const [education, setEducation] = useState(service.getAll());
@@ -77,7 +80,9 @@ export default function Education() {
       <form>
         <div className="langagues-input-wrapper">
           <div className="educations-input">
-            <label htmlFor="input-new-education">Title*</label>
+            <label htmlFor="input-new-education">
+              {capitalize(t("title"))}*
+            </label>
             <input
               id="input-new-education"
               name="title"
@@ -86,7 +91,9 @@ export default function Education() {
               value={inputs.title}
               required="required"
             />
-            <label htmlFor="input-new-education-level">School*</label>
+            <label htmlFor="input-new-education-level">
+              {capitalize(t("school"))}*
+            </label>
             <input
               id="input-new-education-level"
               name="school"
@@ -95,7 +102,9 @@ export default function Education() {
               value={inputs.school}
               required="required"
             />
-            <label htmlFor="input-new-education-level">Year*</label>
+            <label htmlFor="input-new-education-level">
+              {capitalize(t("year"))}*
+            </label>
             <input
               id="input-new-education-level"
               name="year"
@@ -107,7 +116,9 @@ export default function Education() {
               value={+inputs.year}
               required="required"
             />
-            <label htmlFor="input-new-education-level">Place</label>
+            <label htmlFor="input-new-education-level">
+              {capitalize(t("place"))}
+            </label>
             <input
               id="input-new-education-level"
               name="place"
@@ -118,7 +129,7 @@ export default function Education() {
             />
           </div>
           <button onClick={addEducation} className="add-btn">
-            Add
+            {capitalize(t("add"))}
           </button>
         </div>
       </form>
