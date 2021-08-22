@@ -44,7 +44,12 @@
   "professional experiences and completed projects": "professional experiences and completed projects",
 
   "save": "save",
+  "data saved": "data saved successfully",
+  "item deleted": "item deleted",
+  "item saved": "the item has been saved",
   "add": "add",
+  "waiting...": "waiting...",
+  "please fill in all mandatory fields": "please fill in all mandatory fields",
 
   "comma separated values": "comma separated values"
 }

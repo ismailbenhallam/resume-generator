@@ -1,5 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants";
 import InterestsService from "../../../services/interests-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Interests.css";
@@ -20,22 +22,35 @@ export default function Interests() {
   };
 
   const removeInterest = (i) => {
-    setState((oldState) => {
-      interestsService.removeOne(i);
-      return {
-        interest: state.interest,
-        interests: interestsService.getAll(),
-      };
+    const toastId = toast.loading(capitalize(t("waiting...")));
+    interestsService.removeOne(i);
+    setState({
+      interest: state.interest,
+      interests: interestsService.getAll(),
+    });
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
     });
   };
 
   const addInterest = (event) => {
     event.preventDefault();
-    if (!state.interest.trim()) return;
+    if (!state.interest.trim()) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
+      return;
+    }
+
+    const toastId = toast.loading(capitalize(t("waiting...")));
     interestsService.addOne(state.interest.trim());
     setState({
       interests: interestsService.getAll(),
       interest: "",
+    });
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
     });
   };
 

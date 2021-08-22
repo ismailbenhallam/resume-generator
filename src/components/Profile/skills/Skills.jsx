@@ -1,5 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants";
 import SkillsService from "../../../services/skills-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Skills.css";
@@ -18,14 +20,24 @@ export default function Skills() {
   };
 
   const removeSkill = (skill) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.removeOne(skill);
     setSkills(service.getAll());
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addSkill = (event) => {
     event.preventDefault();
-    if (!inputs.title.trim()) return;
-
+    if (!inputs.title.trim()) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
+      return;
+    }
+    const toastId = toast.loading(capitalize(t("waiting...")));
     let details = "";
     if (inputs.details.trim()) {
       details = inputs.details.split(",");
@@ -41,6 +53,9 @@ export default function Skills() {
     });
 
     setSkills(service.getAll());
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
+    });
   };
 
   return (

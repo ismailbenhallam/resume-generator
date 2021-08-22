@@ -1,5 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants.js";
 import LanguagesService from "../../../services/languages-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Languages.css";
@@ -18,14 +20,24 @@ export default function Languages() {
   };
 
   const removeLanguage = (name) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.removeOne(name);
     setLanguages(service.getAll());
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addLanguage = (event) => {
     event.preventDefault();
-    if (!inputs.language.trim() || !inputs.level.trim()) return;
-
+    if (!inputs.language.trim() || !inputs.level.trim()) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
+      return;
+    }
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.addOne({
       [inputs.language.trim()]: inputs.level.trim(),
     });
@@ -34,6 +46,9 @@ export default function Languages() {
     setInputs({
       language: "",
       level: "",
+    });
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
     });
   };
 

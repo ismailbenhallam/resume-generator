@@ -1,5 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants";
 import AssetsService from "../../../services/assets-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Assets.css";
@@ -19,6 +21,7 @@ export default function Assets() {
   };
 
   const removeAsset = (a) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     assetsService.removeOne(a);
     setState((old) => {
       return {
@@ -26,16 +29,28 @@ export default function Assets() {
         assets: assetsService.getAll(),
       };
     });
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addAsset = (event) => {
     event.preventDefault();
-    if (!state.asset.trim()) return;
+    if (!state.asset.trim()) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
+      return;
+    }
+    const toastId = toast.loading(capitalize(t("waiting...")));
     assetsService.addOne(state.asset.trim());
-
     setState({
       assets: assetsService.getAll(),
       asset: "",
+    });
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
     });
   };
 

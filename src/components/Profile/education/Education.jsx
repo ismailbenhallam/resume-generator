@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants.js";
 import EducationService from "../../../services/education-service.js";
 import capitalize from "../../../utilities/capitalize.js";
 import "./Education.css";
@@ -24,8 +26,12 @@ export default function Education() {
   };
 
   const removeEducation = (educ) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.removeOne(educ);
     setEducation(service.getAll());
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addEducation = (event) => {
@@ -35,14 +41,21 @@ export default function Education() {
       !inputs.school.trim() ||
       inputs.year > currentYear ||
       inputs.year < 1970
-    )
+    ) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
       return;
+    }
+
+    const toastId = toast.loading(capitalize(t("waiting...")));
 
     service.addOne({
       title: inputs.title.trim(),
       school: inputs.school.trim(),
-      period: +inputs.year.trim(),
-      place: inputs.place.trim(),
+      period: +inputs.year,
+      place: inputs.place ? inputs.place.trim() : null,
     });
 
     setInputs({
@@ -53,6 +66,10 @@ export default function Education() {
     });
 
     setEducation(service.getAll());
+
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
+    });
   };
 
   return (

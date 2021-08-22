@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import CoordinatesService from "../../../services/coordinates";
 import capitalize from "../../../utilities/capitalize";
@@ -18,11 +19,15 @@ const Coordinates = () => {
   };
 
   const save = (event) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     event.preventDefault();
     Object.entries(inputs).forEach((entry) => {
       service.addOne({
         [entry[0]]: entry[1].trim(),
       });
+    });
+    toast.success(capitalize(t("data saved")), {
+      id: toastId,
     });
   };
 

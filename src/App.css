@@ -6,7 +6,7 @@
   justify-content: center;
   font-size: 0.8rem;
   margin: 10px auto;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgb(240, 255, 239) 0px 5px 15px;
 }
 
 @media print {

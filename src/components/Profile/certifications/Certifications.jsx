@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants";
 import CertificationsService from "../../../services/certifications-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Certifications.css";
@@ -19,13 +21,24 @@ export default function Certifications(props) {
   };
 
   const removeCertification = (certif) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.removeOne(certif);
     setCertifications(service.getAll());
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addCertification = (event) => {
     event.preventDefault();
-    if (!inputs.certification.trim() || !inputs.url.trim()) return;
+    if (!inputs.certification.trim() || !inputs.url.trim()) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
+      return;
+    }
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.addOne({
       name: inputs.certification.trim(),
       organization: inputs.organization.trim(),
@@ -37,6 +50,9 @@ export default function Certifications(props) {
       organization: "",
     });
     setCertifications(service.getAll());
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
+    });
   };
 
   return (

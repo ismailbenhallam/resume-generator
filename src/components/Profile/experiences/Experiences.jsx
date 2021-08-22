@@ -5,7 +5,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { TOAST_WARNING_STYLE } from "../../../constants";
 import ExperiencesService from "../../../services/experiences-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Experiences.css";
@@ -30,8 +32,12 @@ export default function Experiences() {
   };
 
   const removeExperience = (exp) => {
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.removeOne(exp);
     setExperiences(service.getAll());
+    toast.success(capitalize(t("item deleted")), {
+      id: toastId,
+    });
   };
 
   const addExperience = (event) => {
@@ -41,9 +47,14 @@ export default function Experiences() {
       !inputs.enterprise.trim() ||
       !inputs.period.trim() ||
       !inputs.place.trim()
-    )
+    ) {
+      toast(
+        capitalize(t("please fill in all mandatory fields")),
+        TOAST_WARNING_STYLE
+      );
       return;
-
+    }
+    const toastId = toast.loading(capitalize(t("waiting...")));
     service.addOne({
       period: inputs.period.trim(),
       title: inputs.title.trim(),
@@ -64,6 +75,10 @@ export default function Experiences() {
     });
 
     setExperiences(service.getAll());
+
+    toast.success(capitalize(t("item saved")), {
+      id: toastId,
+    });
   };
 
   return (
