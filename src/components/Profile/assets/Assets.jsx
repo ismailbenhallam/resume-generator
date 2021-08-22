@@ -1,13 +1,16 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import AssetsService from "../../../services/assets-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Assets.css";
 
 export default function Assets() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
   const assetsService = new AssetsService();
   const [state, setState] = useState({
     asset: "",
@@ -21,7 +24,7 @@ export default function Assets() {
   };
 
   const removeAsset = (a) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     assetsService.removeOne(a);
     setState((old) => {
       return {
@@ -29,29 +32,22 @@ export default function Assets() {
         assets: assetsService.getAll(),
       };
     });
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addAsset = (event) => {
     event.preventDefault();
     if (!state.asset.trim()) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    addWaitingToast();
     assetsService.addOne(state.asset.trim());
     setState({
       assets: assetsService.getAll(),
       asset: "",
     });
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

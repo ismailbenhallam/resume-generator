@@ -1,14 +1,19 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import InterestsService from "../../../services/interests-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Interests.css";
 
 export default function Interests() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const interestsService = new InterestsService();
+
   const [state, setState] = useState({
     interest: "",
     interests: interestsService.getAll(),
@@ -22,36 +27,29 @@ export default function Interests() {
   };
 
   const removeInterest = (i) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     interestsService.removeOne(i);
     setState({
       interest: state.interest,
       interests: interestsService.getAll(),
     });
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addInterest = (event) => {
     event.preventDefault();
     if (!state.interest.trim()) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
 
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    addWaitingToast();
     interestsService.addOne(state.interest.trim());
     setState({
       interests: interestsService.getAll(),
       interest: "",
     });
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

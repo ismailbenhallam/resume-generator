@@ -1,13 +1,17 @@
 import { Fragment, useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants.js";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast.js";
+import useToast from "../../../hooks/useToast.js";
 import EducationService from "../../../services/education-service.js";
 import capitalize from "../../../utilities/capitalize.js";
 import "./Education.css";
 
 export default function Education() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new EducationService();
   const currentYear = new Date().getFullYear();
   const [education, setEducation] = useState(service.getAll());
@@ -26,12 +30,10 @@ export default function Education() {
   };
 
   const removeEducation = (educ) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     service.removeOne(educ);
     setEducation(service.getAll());
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addEducation = (event) => {
@@ -42,15 +44,11 @@ export default function Education() {
       inputs.year > currentYear ||
       inputs.year < 1970
     ) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
 
-    const toastId = toast.loading(capitalize(t("waiting...")));
-
+    addWaitingToast();
     service.addOne({
       title: inputs.title.trim(),
       school: inputs.school.trim(),
@@ -67,9 +65,7 @@ export default function Education() {
 
     setEducation(service.getAll());
 
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

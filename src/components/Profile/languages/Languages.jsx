@@ -1,13 +1,16 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants.js";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast.js";
+import useToast from "../../../hooks/useToast.js";
 import LanguagesService from "../../../services/languages-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Languages.css";
 
 export default function Languages() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
   const service = new LanguagesService();
   const [languages, setLanguages] = useState(service.getAll());
   const [inputs, setInputs] = useState({
@@ -20,36 +23,29 @@ export default function Languages() {
   };
 
   const removeLanguage = (name) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     service.removeOne(name);
     setLanguages(service.getAll());
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addLanguage = (event) => {
     event.preventDefault();
     if (!inputs.language.trim() || !inputs.level.trim()) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
-    const toastId = toast.loading(capitalize(t("waiting...")));
+
+    addWaitingToast();
     service.addOne({
       [inputs.language.trim()]: inputs.level.trim(),
     });
     setLanguages(service.getAll());
-
     setInputs({
       language: "",
       level: "",
     });
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

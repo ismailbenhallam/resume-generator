@@ -1,13 +1,17 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import PrincipalSkillsService from "../../../services/principal-skills-service";
 import capitalize from "../../../utilities/capitalize";
 import "./PrincipalSkills.css";
 
 export default function PrincipalSkillss() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new PrincipalSkillsService();
   const [value, setValue] = useState("");
   const [principalSkills, setPrincipalSkills] = useState(service.getAll());
@@ -17,31 +21,23 @@ export default function PrincipalSkillss() {
   };
 
   const removePrincipalSkills = (skill) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     service.removeOne(skill);
     setPrincipalSkills(service.getAll());
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addPrincipalSkills = (event) => {
     event.preventDefault();
     if (!value) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    addWaitingToast();
     service.addOne(value);
-
     setPrincipalSkills(service.getAll());
     setValue("");
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

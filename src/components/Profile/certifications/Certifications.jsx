@@ -1,13 +1,17 @@
 import { Fragment, useState } from "react";
-import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import { TOAST_WARNING_STYLE } from "../../../constants";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import CertificationsService from "../../../services/certifications-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Certifications.css";
 
-export default function Certifications(props) {
+export default function Certifications() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new CertificationsService();
   const [certifications, setCertifications] = useState(service.getAll());
   const [inputs, setInputs] = useState({
@@ -21,24 +25,19 @@ export default function Certifications(props) {
   };
 
   const removeCertification = (certif) => {
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    removeWaitingToast();
     service.removeOne(certif);
     setCertifications(service.getAll());
-    toast.success(capitalize(t("item deleted")), {
-      id: toastId,
-    });
+    removeSuccessToast();
   };
 
   const addCertification = (event) => {
     event.preventDefault();
     if (!inputs.certification.trim() || !inputs.url.trim()) {
-      toast(
-        capitalize(t("please fill in all mandatory fields")),
-        TOAST_WARNING_STYLE
-      );
+      warnToast();
       return;
     }
-    const toastId = toast.loading(capitalize(t("waiting...")));
+    addWaitingToast();
     service.addOne({
       name: inputs.certification.trim(),
       organization: inputs.organization.trim(),
@@ -50,9 +49,7 @@ export default function Certifications(props) {
       organization: "",
     });
     setCertifications(service.getAll());
-    toast.success(capitalize(t("item saved")), {
-      id: toastId,
-    });
+    addSuccessToast();
   };
 
   return (

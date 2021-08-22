@@ -8,10 +8,10 @@ export default function ConfiguredToaster() {
       gutter={8}
       toastOptions={{
         duration: 2000,
-        custom: {
-          style: { background: "#FDF5EC", color: "black" },
-          icon: <span style={{ color: "#ED9B40" }}>&#9888;</span>,
-        },
+        // custom: {
+        //   style: { background: "#FDF5EC", color: "black" },
+        //   icon: <span style={{ color: "#ED9B40" }}>&#9888;</span>,
+        // },
         success: {
           style: {
             background: "#EFF9F6",
