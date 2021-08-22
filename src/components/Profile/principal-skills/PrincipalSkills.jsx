@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import PrincipalSkillsService from "../../../services/principal-skills-service";
 import capitalize from "../../../utilities/capitalize";
 import "./PrincipalSkills.css";
 
 export default function PrincipalSkillss() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new PrincipalSkillsService();
   const [value, setValue] = useState("");
   const [principalSkills, setPrincipalSkills] = useState(service.getAll());
@@ -15,17 +21,23 @@ export default function PrincipalSkillss() {
   };
 
   const removePrincipalSkills = (skill) => {
+    removeWaitingToast();
     service.removeOne(skill);
     setPrincipalSkills(service.getAll());
+    removeSuccessToast();
   };
 
   const addPrincipalSkills = (event) => {
     event.preventDefault();
-    if (!value) return;
+    if (!value) {
+      warnToast();
+      return;
+    }
+    addWaitingToast();
     service.addOne(value);
-
     setPrincipalSkills(service.getAll());
     setValue("");
+    addSuccessToast();
   };
 
   return (

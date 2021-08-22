@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import AssetsService from "../../../services/assets-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Assets.css";
 
 export default function Assets() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
   const assetsService = new AssetsService();
   const [state, setState] = useState({
     asset: "",
@@ -19,6 +24,7 @@ export default function Assets() {
   };
 
   const removeAsset = (a) => {
+    removeWaitingToast();
     assetsService.removeOne(a);
     setState((old) => {
       return {
@@ -26,17 +32,22 @@ export default function Assets() {
         assets: assetsService.getAll(),
       };
     });
+    removeSuccessToast();
   };
 
   const addAsset = (event) => {
     event.preventDefault();
-    if (!state.asset.trim()) return;
+    if (!state.asset.trim()) {
+      warnToast();
+      return;
+    }
+    addWaitingToast();
     assetsService.addOne(state.asset.trim());
-
     setState({
       assets: assetsService.getAll(),
       asset: "",
     });
+    addSuccessToast();
   };
 
   return (

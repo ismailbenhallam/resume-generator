@@ -44,7 +44,12 @@
   "professional experiences and completed projects": "expériences professionnelles et projets réalisés",
 
   "save": "enregistrer",
+  "data saved": "données enregistrées avec succès",
+  "item deleted": "l'élément a été supprimé",
+  "item saved": "l'élément a été enregistré",
   "add": "ajouter",
+  "waiting...": "chargement...",
+  "please fill in all mandatory fields": "veuillez remplir tous les champs obligatoires",
 
   "comma separated values": "valeurs séparées par des virgules"
 }

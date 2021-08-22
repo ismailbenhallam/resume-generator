@@ -1,11 +1,17 @@
 import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast.js";
+import useToast from "../../../hooks/useToast.js";
 import EducationService from "../../../services/education-service.js";
 import capitalize from "../../../utilities/capitalize.js";
 import "./Education.css";
 
 export default function Education() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new EducationService();
   const currentYear = new Date().getFullYear();
   const [education, setEducation] = useState(service.getAll());
@@ -24,8 +30,10 @@ export default function Education() {
   };
 
   const removeEducation = (educ) => {
+    removeWaitingToast();
     service.removeOne(educ);
     setEducation(service.getAll());
+    removeSuccessToast();
   };
 
   const addEducation = (event) => {
@@ -35,14 +43,17 @@ export default function Education() {
       !inputs.school.trim() ||
       inputs.year > currentYear ||
       inputs.year < 1970
-    )
+    ) {
+      warnToast();
       return;
+    }
 
+    addWaitingToast();
     service.addOne({
       title: inputs.title.trim(),
       school: inputs.school.trim(),
-      period: +inputs.year.trim(),
-      place: inputs.place.trim(),
+      period: +inputs.year,
+      place: inputs.place ? inputs.place.trim() : null,
     });
 
     setInputs({
@@ -53,6 +64,8 @@ export default function Education() {
     });
 
     setEducation(service.getAll());
+
+    addSuccessToast();
   };
 
   return (

@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import SkillsService from "../../../services/skills-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Skills.css";
 
 export default function Skills() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new SkillsService();
   const [inputs, setInputs] = useState({
     title: "",
@@ -18,14 +24,19 @@ export default function Skills() {
   };
 
   const removeSkill = (skill) => {
+    removeWaitingToast();
     service.removeOne(skill);
     setSkills(service.getAll());
+    removeSuccessToast();
   };
 
   const addSkill = (event) => {
     event.preventDefault();
-    if (!inputs.title.trim()) return;
-
+    if (!inputs.title.trim()) {
+      warnToast();
+      return;
+    }
+    addWaitingToast();
     let details = "";
     if (inputs.details.trim()) {
       details = inputs.details.split(",");
@@ -41,6 +52,7 @@ export default function Skills() {
     });
 
     setSkills(service.getAll());
+    addSuccessToast();
   };
 
   return (

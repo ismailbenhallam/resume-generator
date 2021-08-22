@@ -1,11 +1,17 @@
 import { Fragment, useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import CertificationsService from "../../../services/certifications-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Certifications.css";
 
-export default function Certifications(props) {
+export default function Certifications() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const service = new CertificationsService();
   const [certifications, setCertifications] = useState(service.getAll());
   const [inputs, setInputs] = useState({
@@ -19,13 +25,19 @@ export default function Certifications(props) {
   };
 
   const removeCertification = (certif) => {
+    removeWaitingToast();
     service.removeOne(certif);
     setCertifications(service.getAll());
+    removeSuccessToast();
   };
 
   const addCertification = (event) => {
     event.preventDefault();
-    if (!inputs.certification.trim() || !inputs.url.trim()) return;
+    if (!inputs.certification.trim() || !inputs.url.trim()) {
+      warnToast();
+      return;
+    }
+    addWaitingToast();
     service.addOne({
       name: inputs.certification.trim(),
       organization: inputs.organization.trim(),
@@ -37,6 +49,7 @@ export default function Certifications(props) {
       organization: "",
     });
     setCertifications(service.getAll());
+    addSuccessToast();
   };
 
   return (

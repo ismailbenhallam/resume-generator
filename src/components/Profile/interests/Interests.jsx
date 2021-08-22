@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
+import useToast from "../../../hooks/useToast";
 import InterestsService from "../../../services/interests-service";
 import capitalize from "../../../utilities/capitalize";
 import "./Interests.css";
 
 export default function Interests() {
   const { t } = useTranslation();
+  const [removeWaitingToast, removeSuccessToast] = useToast("item deleted");
+  const [addWaitingToast, addSuccessToast] = useToast("item saved");
+  const warnToast = useRequiredFieldsToast();
+
   const interestsService = new InterestsService();
+
   const [state, setState] = useState({
     interest: "",
     interests: interestsService.getAll(),
@@ -20,23 +27,29 @@ export default function Interests() {
   };
 
   const removeInterest = (i) => {
-    setState((oldState) => {
-      interestsService.removeOne(i);
-      return {
-        interest: state.interest,
-        interests: interestsService.getAll(),
-      };
+    removeWaitingToast();
+    interestsService.removeOne(i);
+    setState({
+      interest: state.interest,
+      interests: interestsService.getAll(),
     });
+    removeSuccessToast();
   };
 
   const addInterest = (event) => {
     event.preventDefault();
-    if (!state.interest.trim()) return;
+    if (!state.interest.trim()) {
+      warnToast();
+      return;
+    }
+
+    addWaitingToast();
     interestsService.addOne(state.interest.trim());
     setState({
       interests: interestsService.getAll(),
       interest: "",
     });
+    addSuccessToast();
   };
 
   return (
