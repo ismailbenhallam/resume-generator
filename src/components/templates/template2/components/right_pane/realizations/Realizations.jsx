@@ -2,14 +2,14 @@ import capitalize from "../../../../../../utilities/capitalize";
 import SectionTitle from "../../section-title/SectionTitle";
 import "./Realizations.css";
 
-export default function Realizations(props) {
+export default function Realizations({ realizations, title }) {
   return (
     <>
-      {props.realizations && props.realizations.length > 0 && (
+      {realizations && realizations.length > 0 && (
         <>
-          <SectionTitle title={capitalize(props.title)} />
+          <SectionTitle title={capitalize(title)} />
           <div className="realizations">
-            {props.realizations.map((r) => (
+            {realizations.map((r) => (
               <div key={r.title} className="realization">
                 <div className="top">
                   <div className="top-left">
@@ -24,9 +24,7 @@ export default function Realizations(props) {
                     {r.more && (
                       <>
                         <br />
-                        <span className="more">
-                          {props.technologiesPrefix + r.more}
-                        </span>
+                        <span className="more">{r.more}</span>
                       </>
                     )}
                   </div>
@@ -39,7 +37,3 @@ export default function Realizations(props) {
     </>
   );
 }
-
-Realizations.defaultProps = {
-  technologiesPrefix: "Technologies: ",
-};
