@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import AssetsService from "../../../../../services/assets-service";
+import Margin from "../../../../helpers/margin/Margin";
 import Divider from "../../helpers/divider/Divider";
-import Margin from "../../helpers/margin/Margin";
 import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
 import "./Assets.css";
 

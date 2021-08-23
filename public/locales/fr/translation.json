@@ -1,6 +1,7 @@
 {
   "profile": "Profil",
   "My Profile": "Mon profil",
+  "my resumes": "mes CV",
   "save as pdf": "Enregistrer en PDF",
 
   "coordinates": "coordonnés",
@@ -51,5 +52,8 @@
   "waiting...": "chargement...",
   "please fill in all mandatory fields": "veuillez remplir tous les champs obligatoires",
 
-  "comma separated values": "valeurs séparées par des virgules"
+  "comma separated values": "valeurs séparées par des virgules",
+
+  "on": "activé",
+  "off": "désactivé"
 }

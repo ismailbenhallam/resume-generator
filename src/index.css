@@ -19,3 +19,8 @@ button {
   margin-top: 10px;
   border-radius: 5px;
 }
+
+.no-style {
+  text-decoration: inherit;
+  color: inherit;
+}

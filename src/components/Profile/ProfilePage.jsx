@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import capitalize from "../../utilities/capitalize";
@@ -36,40 +37,42 @@ export default function ProfilePage() {
   };
 
   return (
-    <div id="profile-page">
-      <h1>{t("My Profile")}</h1>
-      <div className="grid">
-        <div className="informations-tab">
-          <ul>
-            {keyElements.map((key, index) =>
-              selectedKey === key ? (
-                <li
-                  key={key}
-                  onClick={handleLiClick}
-                  data-key={key}
-                  className="active">
-                  {capitalize(elements[index])}
-                </li>
-              ) : (
-                <li key={key} onClick={handleLiClick} data-key={key}>
-                  {capitalize(elements[index])}
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-        <div className="active-tab">
-          {selectedKey === "coordinates" && <Coordinates />}
-          {selectedKey === "languages" && <Languages />}
-          {selectedKey === "assets" && <Assets />}
-          {selectedKey === "interests" && <Interests />}
-          {selectedKey === "experiences" && <Experiences />}
-          {selectedKey === "education" && <Education />}
-          {selectedKey === "skills" && <Skills />}
-          {selectedKey === "principal skills" && <PrincipalSkillss />}
-          {selectedKey === "certifications" && <Certifications />}
+    <Container>
+      <div id="profile-page">
+        <h1>{t("My Profile")}</h1>
+        <div className="grid">
+          <div className="informations-tab">
+            <ul>
+              {keyElements.map((key, index) =>
+                selectedKey === key ? (
+                  <li
+                    key={key}
+                    onClick={handleLiClick}
+                    data-key={key}
+                    className="active">
+                    {capitalize(elements[index])}
+                  </li>
+                ) : (
+                  <li key={key} onClick={handleLiClick} data-key={key}>
+                    {capitalize(elements[index])}
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+          <div className="active-tab">
+            {selectedKey === "coordinates" && <Coordinates />}
+            {selectedKey === "languages" && <Languages />}
+            {selectedKey === "assets" && <Assets />}
+            {selectedKey === "interests" && <Interests />}
+            {selectedKey === "experiences" && <Experiences />}
+            {selectedKey === "education" && <Education />}
+            {selectedKey === "skills" && <Skills />}
+            {selectedKey === "principal skills" && <PrincipalSkillss />}
+            {selectedKey === "certifications" && <Certifications />}
+          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

@@ -1,6 +1,7 @@
 {
   "profile": "Profile",
   "My Profile": "My Profile",
+  "my resumes": "my resumes",
   "save as pdf": "Save as PDF",
 
   "coordinates": "coordinates",
@@ -51,5 +52,8 @@
   "waiting...": "waiting...",
   "please fill in all mandatory fields": "please fill in all mandatory fields",
 
-  "comma separated values": "comma separated values"
+  "comma separated values": "comma separated values",
+
+  "on": "on",
+  "off": "off"
 }

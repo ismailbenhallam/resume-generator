@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 import CoordinatesService from "../../../../../services/coordinates";
 import calculateAge from "../../../../../utilities/calclulateAgeFromStringDate";
 import getUsernameFromNetworkUrl from "../../../../../utilities/getUsernameFromNetworkUrl";
-import Margin from "../../helpers/margin/Margin";
+import Margin from "../../../../helpers/margin/Margin";
 import "./Informations.css";
 
 export default function Informations(props) {
