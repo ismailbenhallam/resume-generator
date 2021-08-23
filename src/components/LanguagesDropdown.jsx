@@ -39,7 +39,7 @@ function LanguageDropdown() {
           labelId="language-select-label"
           id="language-select"
           defaultValue="fr"
-          style={{ width: "150px", backgroundColor: "white" }}
+          style={{ height: 45, width: "150px", backgroundColor: "white" }}
           onChange={(event) => {
             i18next.changeLanguage(event.target.value);
           }}>
