@@ -1,0 +1,45 @@
+#profile-page .active-tab .langagues-list {
+  margin-bottom: 40px;
+}
+
+#profile-page .active-tab .langague {
+  display: grid;
+  grid-template-columns: 40% 46% 8%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#profile-page .active-tab .langague .remove-btn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+  height: max-content;
+}
+
+#profile-page .active-tab .langagues-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-page .active-tab .languages-input {
+  display: grid;
+  grid-template-columns: auto 30% auto 30%;
+  row-gap: 10px;
+  column-gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+#profile-page .active-tab .languages input {
+  font-size: 1.4rem;
+}
+
+#profile-page .active-tab .add-btn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}
