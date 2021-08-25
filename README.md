@@ -2,7 +2,7 @@
 
 This project developed using ReactJs and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![CI/CD](https://github.com/ismailbenhallam/resume-generator/workflows/CI/CD/badge.svg)
+![CI/CD](https://github.com/ismailbenhallam/resume-generator/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)
 
 ## Examples of templates
 
