@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.2e3476a5.chunk.css",
-    "main.js": "/static/js/main.bc6f785b.chunk.js",
-    "main.js.map": "/static/js/main.bc6f785b.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.201899c4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.201899c4.js.map",
-    "static/js/2.8d9bec37.chunk.js": "/static/js/2.8d9bec37.chunk.js",
-    "static/js/2.8d9bec37.chunk.js.map": "/static/js/2.8d9bec37.chunk.js.map",
-    "static/js/3.fe3783ba.chunk.js": "/static/js/3.fe3783ba.chunk.js",
-    "static/js/3.fe3783ba.chunk.js.map": "/static/js/3.fe3783ba.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.2e3476a5.chunk.css.map": "/static/css/main.2e3476a5.chunk.css.map",
-    "static/js/2.8d9bec37.chunk.js.LICENSE.txt": "/static/js/2.8d9bec37.chunk.js.LICENSE.txt",
-    "static/media/getFetch.cjs": "/static/media/getFetch.582d29c4.cjs",
-    "static/media/ismail.7f56a4d2.jpg": "/static/media/ismail.7f56a4d2.jpg"
+    "main.css": "/resume-generator/static/css/main.2e3476a5.chunk.css",
+    "main.js": "/resume-generator/static/js/main.bc6f785b.chunk.js",
+    "main.js.map": "/resume-generator/static/js/main.bc6f785b.chunk.js.map",
+    "runtime-main.js": "/resume-generator/static/js/runtime-main.64b342a0.js",
+    "runtime-main.js.map": "/resume-generator/static/js/runtime-main.64b342a0.js.map",
+    "static/js/2.8d9bec37.chunk.js": "/resume-generator/static/js/2.8d9bec37.chunk.js",
+    "static/js/2.8d9bec37.chunk.js.map": "/resume-generator/static/js/2.8d9bec37.chunk.js.map",
+    "static/js/3.fe3783ba.chunk.js": "/resume-generator/static/js/3.fe3783ba.chunk.js",
+    "static/js/3.fe3783ba.chunk.js.map": "/resume-generator/static/js/3.fe3783ba.chunk.js.map",
+    "index.html": "/resume-generator/index.html",
+    "static/css/main.2e3476a5.chunk.css.map": "/resume-generator/static/css/main.2e3476a5.chunk.css.map",
+    "static/js/2.8d9bec37.chunk.js.LICENSE.txt": "/resume-generator/static/js/2.8d9bec37.chunk.js.LICENSE.txt",
+    "static/media/getFetch.cjs": "/resume-generator/static/media/getFetch.582d29c4.cjs",
+    "static/media/ismail.7f56a4d2.jpg": "/resume-generator/static/media/ismail.7f56a4d2.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.201899c4.js",
+    "static/js/runtime-main.64b342a0.js",
     "static/js/2.8d9bec37.chunk.js",
     "static/css/main.2e3476a5.chunk.css",
     "static/js/main.bc6f785b.chunk.js"
