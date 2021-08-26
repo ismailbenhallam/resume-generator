@@ -1,6 +1,6 @@
 export default class AbstractService {
   getAll = () => {
-    let savedItems = localStorage.getItem(this.constructor.name);
+    let savedItems = localStorage.getItem(this.serviceName);
     let array;
     if (savedItems) array = JSON.parse(savedItems);
     if (!array) {
@@ -11,7 +11,7 @@ export default class AbstractService {
   };
 
   save = (array) => {
-    localStorage.setItem(this.constructor.name, JSON.stringify(array));
+    localStorage.setItem(this.serviceName, JSON.stringify(array));
   };
 
   removeOne = (element) => {

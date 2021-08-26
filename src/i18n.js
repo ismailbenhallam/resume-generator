@@ -25,6 +25,9 @@ i18n
         bindI18n: "languageChanged",
       },
     },
+    backend: {
+      loadPath: "/locales/{{lng}}/translation.json",
+    },
     //TODO: remove
     debug: true,
   });

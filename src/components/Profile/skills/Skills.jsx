@@ -62,7 +62,9 @@ export default function Skills() {
           {Object.entries(skills).map((l) => (
             <div key={l[0]} className="skill">
               <span>{l[0]}</span>
-              <span>{l[1] ? l[1].join(", ") : ""}</span>
+              <span>
+                {l[1] ? (Array.isArray(l[1]) ? l[1].join(", ") : l[1]) : ""}
+              </span>
               <button onClick={() => removeSkill(l[0])} className="remove-btn">
                 X
               </button>

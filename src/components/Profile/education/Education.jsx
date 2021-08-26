@@ -104,22 +104,22 @@ export default function Education() {
               value={inputs.title}
               required="required"
             />
-            <label htmlFor="input-new-education-level">
+            <label htmlFor="input-new-education-school">
               {capitalize(t("school"))}*
             </label>
             <input
-              id="input-new-education-level"
+              id="input-new-education-school"
               name="school"
               type="text"
               onChange={handleChange}
               value={inputs.school}
               required="required"
             />
-            <label htmlFor="input-new-education-level">
+            <label htmlFor="input-new-education-year">
               {capitalize(t("year"))}*
             </label>
             <input
-              id="input-new-education-level"
+              id="input-new-education-year"
               name="year"
               type="number"
               min={1970}
@@ -129,11 +129,11 @@ export default function Education() {
               value={+inputs.year}
               required="required"
             />
-            <label htmlFor="input-new-education-level">
+            <label htmlFor="input-new-education-place">
               {capitalize(t("place"))}
             </label>
             <input
-              id="input-new-education-level"
+              id="input-new-education-place"
               name="place"
               type="text"
               onChange={handleChange}

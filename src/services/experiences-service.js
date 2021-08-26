@@ -4,3 +4,4 @@ import AbstractService from "./abstract-service";
 export default class ExperiencesService extends AbstractService {}
 
 ExperiencesService.prototype.getDefaultValues = () => experiences;
+ExperiencesService.prototype.serviceName = "ExperiencesService";

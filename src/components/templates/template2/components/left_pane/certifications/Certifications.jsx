@@ -8,7 +8,7 @@ export default function Certifications() {
   const { t } = useTranslation();
   const service = new CertificationsService();
   const certifications = service.getAll();
-  return Object.entries(certifications).length ? (
+  return certifications.length ? (
     <>
       <SectionTitle title={capitalize(t("certifications"))} />
       <div className="certifications">

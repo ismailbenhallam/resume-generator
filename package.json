@@ -1,6 +1,6 @@
 {
   "name": "resume-generator",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "homepage": "https://ismailbenhallam.github.io/resume-generator",
   "private": true,
   "dependencies": {

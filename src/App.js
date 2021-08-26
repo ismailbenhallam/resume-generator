@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./App.css";
 import ConfiguredToaster from "./components/ConfiguredToaster";
 import LanguageDropdown from "./components/LanguagesDropdown";
-import ProfilePage from "./components/profile/ProfilePage";
+import ProfilePage from "./components/Profile/ProfilePage";
 import Template1 from "./components/templates/template1/Template1";
 import Template2 from "./components/templates/template2/Template2";
 
@@ -19,7 +19,7 @@ function App() {
   const { t } = useTranslation();
 
   const [selectedTemplate, setSelectedTemplate] = useState(
-    Object.entries(templates)[1][1]
+    Object.entries(templates)[0][1]
   );
 
   const handleChangeTemplate = (event) => {

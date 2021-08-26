@@ -87,19 +87,19 @@ export default function Certifications() {
               value={inputs.certification}
               required="required"
             />
-            <label htmlFor="input-new-certification-level">
+            <label htmlFor="input-new-certification-organization">
               {capitalize(t("organization"))}
             </label>
             <input
-              id="input-new-certification-level"
+              id="input-new-certification-organization"
               name="organization"
               type="text"
               onChange={handleChange}
               value={inputs.organization}
             />
-            <label htmlFor="input-new-certification-level">URL*</label>
+            <label htmlFor="input-new-certification-URL">URL*</label>
             <input
-              id="input-new-certification-level"
+              id="input-new-certification-URL"
               name="url"
               type="URL"
               onChange={handleChange}
