@@ -13,9 +13,7 @@
     "static/css/main.2e3476a5.chunk.css.map": "/resume-generator/static/css/main.2e3476a5.chunk.css.map",
     "static/js/2.8537bf9f.chunk.js.LICENSE.txt": "/resume-generator/static/js/2.8537bf9f.chunk.js.LICENSE.txt",
     "static/media/getFetch.cjs": "/resume-generator/static/media/getFetch.582d29c4.cjs",
-    "static/media/ismail.7f56a4d2.jpg": "/resume-generator/static/media/ismail.7f56a4d2.jpg",
-    "locales/en/translation.json": "/resume-generator/locales/en/translation.json",
-    "locales/fr/translation.json": "/resume-generator/locales/fr/translation.json"
+    "static/media/ismail.7f56a4d2.jpg": "/resume-generator/static/media/ismail.7f56a4d2.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.64b342a0.js",
