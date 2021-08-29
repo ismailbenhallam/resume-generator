@@ -1,0 +1,40 @@
+.principalSkillsList {
+  margin-bottom: 50px;
+}
+
+.principalSkill {
+  display: grid;
+  grid-template-columns: auto 8%;
+  /* margin-bottom: 10px; */
+}
+
+.remove-btn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+  height: max-content;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: max-content 60%;
+  row-gap: 10px;
+  column-gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.addBtn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}

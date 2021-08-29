@@ -3,7 +3,7 @@ import InterestsService from "../../../../../services/interests-service";
 import Divider from "../../helpers/divider/Divider";
 import Margin from "../../helpers/margin/Margin";
 import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
-import "./Interests.css";
+import styles from "./Interests.module.css";
 
 export default function Interests() {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export default function Interests() {
       <Divider />
       <DetailsSectionTitle title={t("interests")} />
       <Margin value="5px 15px">
-        <div className="interests-wrapper">{elements}</div>
+        <div className={styles.interestsWrapper}>{elements}</div>
       </Margin>
     </>
   ) : (

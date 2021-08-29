@@ -1,0 +1,8 @@
+.grid {
+  font-family: "Gowun Batang";
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  justify-content: center;
+}

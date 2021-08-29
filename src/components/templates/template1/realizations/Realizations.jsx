@@ -1,24 +1,26 @@
 import { Fragment } from "react";
-import capitalize from "../../../../utilities/capitalize";
-import "./Realizations.css";
+import SectionTitle from "../section_title/SectionTitle";
+import styles from "./Realizations.module.css";
 
 export default function Realizations(props) {
   return (
     <>
-      <div className="section_title">{capitalize(props.title)}</div>
-      <div className="realizations">
+      <SectionTitle title={props.title} />
+      <div className={styles.realizations}>
         {props.realizations.map((r) => (
           <Fragment key={r.title}>
-            <div className="period">{r.period}</div>
-            <div className="content">
-              <div className="title">{r.title}</div>
-              <div className="coordinates">
-                <span className="enterprise">{r.enterprise || r.school}</span>
+            <div className={styles.period}>{r.period}</div>
+            <div className={styles.content}>
+              <div className={styles.title}>{r.title}</div>
+              <div className={styles.coordinates}>
+                <span className={styles.enterprise}>
+                  {r.enterprise || r.school}
+                </span>
                 &nbsp;
-                <span className="place">{r.place}</span>
+                <span className={styles.place}>{r.place}</span>
               </div>
-              <div className="details">{r.details}</div>
-              {r.more && <div className="more">{r.more}</div>}
+              <div className={styles.details}>{r.details}</div>
+              {r.more && <div className={styles.more}>{r.more}</div>}
             </div>
           </Fragment>
         ))}

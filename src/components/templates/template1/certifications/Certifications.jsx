@@ -3,20 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import CertificationsService from "../../../../services/certifications-service.js";
-import capitalize from "../../../../utilities/capitalize.js";
 import Divider from "../helpers/divider/Divider.jsx";
-import "./Certifications.css";
+import SectionTitle from "../section_title/SectionTitle.jsx";
+import styles from "./Certifications.module.css";
 
 export default function Certifications() {
-  const { t } = useTranslation();
   const service = new CertificationsService();
+  const { t } = useTranslation();
   const certifications = service.getAll();
   return (
     certifications.length > 0 && (
       <>
         <Divider />
-        <div className="section_title">{capitalize(t("certifications"))}</div>
-        <div className="certifications">
+        <SectionTitle title={t("certifications")}></SectionTitle>
+        <div className={styles.certifications}>
           {certifications.map((certif) => {
             return (
               <Fragment key={certif.name}>
@@ -25,17 +25,17 @@ export default function Certifications() {
                     <a
                       href={certif.url}
                       target="_blank"
-                      className="certification"
+                      className={styles.certification}
                       rel="noreferrer">
                       {certif.name}
                       <FontAwesomeIcon
                         icon={faExternalLinkAlt}
-                        className="icon"
+                        className={styles.icon}
                       />
                     </a>
                   </>
                 ) : (
-                  <span className="certification">{certif.name}</span>
+                  <span className={styles.certification}>{certif.name}</span>
                 )}
               </Fragment>
             );

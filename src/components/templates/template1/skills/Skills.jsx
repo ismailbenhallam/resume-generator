@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import SkillsService from "../../../../services/skills-service";
-import capitalize from "../../../../utilities/capitalize";
 import Divider from "../helpers/divider/Divider";
-import "./Skills.css";
+import SectionTitle from "../section_title/SectionTitle";
+import styles from "./Skills.module.css";
 
 const Skills = () => {
   const { t } = useTranslation();
@@ -13,15 +13,15 @@ const Skills = () => {
     Object.entries(skills).length > 0 && (
       <>
         <Divider />
-        <div className="section_title">{capitalize(t("skills"))}</div>
-        <div className="skills">
+        <SectionTitle title={t("skills")} />
+        <div className={styles.skills}>
           {Object.entries(skills).map((entry) => {
             let key = entry[0];
             let values = entry[1];
             return (
               <Fragment key={key}>
-                <div className="key">{key}</div>
-                <div className="values">{values ? values.join(", ") : ""}</div>
+                <div className={styles.key}>{key}</div>
+                <div>{values ? values.join(", ") : ""}</div>
               </Fragment>
             );
           })}

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import CertificationsService from "../../../../../../services/certifications-service";
 import capitalize from "../../../../../../utilities/capitalize";
 import SectionTitle from "../../section-title/SectionTitle";
-import "./Certifications.css";
+import styles from "./Certifications.module.css";
 
 export default function Certifications() {
   const { t } = useTranslation();
@@ -11,9 +11,9 @@ export default function Certifications() {
   return certifications.length ? (
     <>
       <SectionTitle title={capitalize(t("certifications"))} />
-      <div className="certifications">
+      <div className={styles.certifications}>
         {certifications.map((certif) => (
-          <div key={certif.name} className="certification">
+          <div key={certif.name} className={styles.certification}>
             {certif.url ? (
               <a href={certif.url}>{certif.name}</a>
             ) : (

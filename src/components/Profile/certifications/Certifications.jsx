@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
 import useToast from "../../../hooks/useToast";
 import CertificationsService from "../../../services/certifications-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Certifications.css";
+import styles from "./Certifications.module.css";
 
 export default function Certifications() {
   const { t } = useTranslation();
@@ -53,11 +53,11 @@ export default function Certifications() {
   };
 
   return (
-    <div className="certifications">
-      <div className="certifications-list">
+    <div className={styles.certifications}>
+      <div className={styles.certificationsList}>
         {certifications.map((certif, index) => (
           <Fragment key={certif.name}>
-            <div key={certif.name} className="certification">
+            <div key={certif.name} className={styles.certification}>
               <span>{certif.name}</span>
               <span>{certif.organization}</span>
               <a href={certif.url} target="_blank" rel="noreferrer">
@@ -65,7 +65,7 @@ export default function Certifications() {
               </a>
               <button
                 onClick={() => removeCertification(certif)}
-                className="remove-btn">
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
@@ -74,8 +74,8 @@ export default function Certifications() {
         ))}
       </div>
       <form>
-        <div className="certifications-input-wrapper">
-          <div className="certifications-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-certification">
               {capitalize(t("name"))}*
             </label>
@@ -107,7 +107,7 @@ export default function Certifications() {
               required="required"
             />
           </div>
-          <button onClick={addCertification} className="add-btn">
+          <button onClick={addCertification} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

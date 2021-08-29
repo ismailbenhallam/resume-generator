@@ -1,0 +1,17 @@
+.left {
+  background-color: #1a63b1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  line-height: 1.8rem;
+  /* TODO: */
+  width: 25%;
+}
+
+.right {
+  background-color: whitesmoke;
+  height: 100%;
+  /* TODO: */
+  width: 75%;
+}

@@ -4,7 +4,7 @@ import LanguagesService from "../../../../../services/languages-service";
 import Divider from "../../helpers/divider/Divider";
 import Margin from "../../helpers/margin/Margin";
 import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
-import "./Languages.css";
+import styles from "./Languages.module.css";
 
 export default function Languages() {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ export default function Languages() {
       <Divider />
       <DetailsSectionTitle title={t("languages")} />
       <Margin value="5px 5px">
-        <div className="langagues-grid">{elements}</div>
+        <div className={styles.grid}>{elements}</div>
       </Margin>
     </>
   ) : (

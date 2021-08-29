@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
 import useToast from "../../../hooks/useToast";
 import AssetsService from "../../../services/assets-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Assets.css";
+import styles from "./Assets.module.css";
 
 export default function Assets() {
   const { t } = useTranslation();
@@ -51,13 +51,15 @@ export default function Assets() {
   };
 
   return (
-    <div className="assets">
+    <div className={styles.assets}>
       {state.assets.length > 0 && (
-        <div className="assets-list">
+        <div className={styles.assetsList}>
           {state.assets.map((a) => (
-            <div key={a} className="asset">
+            <div key={a} className={styles.asset}>
               <span>{a}</span>
-              <button onClick={() => removeAsset(a)} className="remove-btn">
+              <button
+                onClick={() => removeAsset(a)}
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
@@ -65,8 +67,8 @@ export default function Assets() {
         </div>
       )}
       <form>
-        <div className="assets-input-wrapper">
-          <div className="assets-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-asset">{capitalize(t("asset"))}</label>
             <input
               id="input-new-asset"
@@ -77,7 +79,7 @@ export default function Assets() {
               required="required"
             />
           </div>
-          <button onClick={addAsset} className="add-btn">
+          <button onClick={addAsset} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

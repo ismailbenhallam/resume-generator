@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
 import useToast from "../../../hooks/useToast";
 import SkillsService from "../../../services/skills-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Skills.css";
+import styles from "./Skills.module.css";
 
 export default function Skills() {
   const { t } = useTranslation();
@@ -56,16 +56,18 @@ export default function Skills() {
   };
 
   return (
-    <div className="skills">
+    <div className={styles.skills}>
       {Object.entries(skills).length > 0 && (
-        <div className="skills-list">
+        <div className={styles.skillsList}>
           {Object.entries(skills).map((l) => (
-            <div key={l[0]} className="skill">
+            <div key={l[0]} className={styles.skill}>
               <span>{l[0]}</span>
               <span>
                 {l[1] ? (Array.isArray(l[1]) ? l[1].join(", ") : l[1]) : ""}
               </span>
-              <button onClick={() => removeSkill(l[0])} className="remove-btn">
+              <button
+                onClick={() => removeSkill(l[0])}
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
@@ -73,11 +75,13 @@ export default function Skills() {
         </div>
       )}
       <form>
-        <div className="skills-input-wrapper">
-          <div className="skills-input">
-            <label htmlFor="input-new-skill">{capitalize(t("skill"))}*</label>
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
+            <label htmlFor={styles.inputNewSkill}>
+              {capitalize(t("skill"))}*
+            </label>
             <input
-              id="input-new-skill"
+              id={styles.inputNewSkill}
               name="title"
               type="text"
               onChange={handleChange}
@@ -98,7 +102,7 @@ export default function Skills() {
               value={inputs.details}
             />
           </div>
-          <button onClick={addSkill} className="add-btn">
+          <button onClick={addSkill} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

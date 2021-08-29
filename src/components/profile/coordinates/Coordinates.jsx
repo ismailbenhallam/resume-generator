@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import CoordinatesService from "../../../services/coordinates";
 import capitalize from "../../../utilities/capitalize";
-import "./Coordinates.css";
+import styles from "./Coordinates.module.css";
 
 const Coordinates = () => {
   const { t } = useTranslation();
@@ -32,8 +32,8 @@ const Coordinates = () => {
   };
 
   return (
-    <form className="coordinates-form">
-      <div className="coordinates">
+    <form className={styles.coordinatesForm}>
+      <div className={styles.coordinates}>
         <label htmlFor="input-firstName">{capitalize(t("first name"))}</label>
         <input
           id="input-firstName"
@@ -125,7 +125,7 @@ const Coordinates = () => {
           onChange={handleChange}
         />
       </div>
-      <button className="save-btn" onClick={save}>
+      <button className={styles.saveBtn} onClick={save}>
         {capitalize(t("save"))}
       </button>
     </form>

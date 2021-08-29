@@ -16,7 +16,7 @@ import CoordinatesService from "../../../../../services/coordinates";
 import calculateAge from "../../../../../utilities/calclulateAgeFromStringDate";
 import getUsernameFromNetworkUrl from "../../../../../utilities/getUsernameFromNetworkUrl";
 import Margin from "../../helpers/margin/Margin";
-import "./Informations.css";
+import styles from "./Informations.module.css";
 
 export default function Informations(props) {
   const {
@@ -54,11 +54,11 @@ export default function Informations(props) {
   ) : (
     <>
       <Margin value="10px 2px">
-        <div className="informations">
+        <div className={styles.informations}>
           {email && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faEnvelope}
                 style={iconsStyle}
               />
@@ -74,7 +74,7 @@ export default function Informations(props) {
           {address && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faMapMarkerAlt}
                 style={iconsStyle}
               />
@@ -84,7 +84,7 @@ export default function Informations(props) {
           {birthDate && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faBirthdayCake}
                 style={iconsStyle}
               />
@@ -98,7 +98,7 @@ export default function Informations(props) {
           {linkedin && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faLinkedin}
                 style={iconsStyle}
               />
@@ -110,7 +110,7 @@ export default function Informations(props) {
           {github && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faGithub}
                 style={iconsStyle}
               />
@@ -126,7 +126,7 @@ export default function Informations(props) {
           {nationality && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faFlag}
                 style={iconsStyle}
               />
@@ -136,7 +136,7 @@ export default function Informations(props) {
           {mobile && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faMobileAlt}
                 style={iconsStyle}
               />
@@ -152,7 +152,7 @@ export default function Informations(props) {
           {website && (
             <>
               <FontAwesomeIcon
-                className="icon"
+                className={styles.icon}
                 icon={faInternetExplorer}
                 style={iconsStyle}
               />

@@ -1,0 +1,41 @@
+.realizations {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.realization {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.topRight {
+  text-align: end;
+  font-weight: bold;
+}
+
+.enterprise {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.bottom {
+  margin-top: 5px;
+}
+
+.more {
+  font-style: italic;
+}

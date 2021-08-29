@@ -1,0 +1,16 @@
+.skills {
+  display: grid;
+  grid-gap: 7px 15px;
+  grid-template-columns: 20% auto;
+  align-items: center;
+  margin: 0px 10px;
+  font-size: 0.7rem;
+}
+
+.key {
+  color: rgba(0, 0, 0, 0.692);
+  margin-left: 10px;
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 0.7rem;
+}

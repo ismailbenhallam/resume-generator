@@ -1,0 +1,15 @@
+.informations {
+  font-family: "Gowun Batang";
+  display: grid;
+  grid-gap: 5px 5px;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  line-height: normal;
+  font-size: 0.71rem;
+}
+.icon {
+  margin: auto;
+  font-size: 0.7rem;
+}

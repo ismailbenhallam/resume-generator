@@ -1,0 +1,11 @@
+.nameAndTitle {
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 10px;
+}
+
+.name {
+  font-weight: 500;
+}

@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { TOAST_WARNING_STYLE } from "../../../constants";
 import ExperiencesService from "../../../services/experiences-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Experiences.css";
+import styles from "./Experiences.module.css";
 
 export default function Experiences() {
   const { t } = useTranslation();
@@ -82,31 +82,34 @@ export default function Experiences() {
   };
 
   return (
-    <div className="experiences">
+    <div className={styles.experiences}>
       {experiences.length > 0 && (
-        <div className="experiences-list">
+        <div className={styles.experiencesList}>
           {experiences.map((ex, index) => (
             <Fragment key={ex.title}>
-              <div className="experience">
-                <span className="title">{ex.title}</span>
-                <span className="enterprise">
-                  <FontAwesomeIcon icon={faBriefcase} className="icon" />
+              <div className={styles.experience}>
+                <span className={styles.title}>{ex.title}</span>
+                <span className={styles.enterprise}>
+                  <FontAwesomeIcon icon={faBriefcase} className={styles.icon} />
                   &nbsp;
                   {ex.enterprise}
                 </span>
-                <span className="period">
-                  <FontAwesomeIcon icon={faCalendarDay} className="icon" />
+                <span className={styles.period}>
+                  <FontAwesomeIcon
+                    icon={faCalendarDay}
+                    className={styles.icon}
+                  />
                   &nbsp;
                   {ex.period}
                 </span>
                 <button
                   onClick={() => removeExperience(ex)}
-                  className="remove-btn">
+                  className={styles.removeBtn}>
                   X
                 </button>
                 <span>{ex.details}</span>
                 <span>
-                  <FontAwesomeIcon icon={faMapPin} className="icon" />
+                  <FontAwesomeIcon icon={faMapPin} className={styles.icon} />
                   &nbsp;{ex.place}
                 </span>
                 <span>{ex.more}</span>
@@ -117,8 +120,8 @@ export default function Experiences() {
         </div>
       )}
       <form>
-        <div className="experiences-input-wrapper">
-          <div className="experiences-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-experience-title">
               {capitalize(t("title"))}*
             </label>
@@ -182,7 +185,7 @@ export default function Experiences() {
               value={inputs.more}
             />
           </div>
-          <button onClick={addExperience} className="add-btn">
+          <button onClick={addExperience} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

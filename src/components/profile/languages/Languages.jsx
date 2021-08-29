@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast.js";
 import useToast from "../../../hooks/useToast.js";
 import LanguagesService from "../../../services/languages-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Languages.css";
+import styles from "./Languages.module.css";
 
 export default function Languages() {
   const { t } = useTranslation();
@@ -49,16 +49,16 @@ export default function Languages() {
   };
 
   return (
-    <div className="languages">
+    <div className={styles.languages}>
       {Object.entries(languages).length > 0 && (
-        <div className="langagues-list">
+        <div className={styles.langaguesList}>
           {Object.entries(languages).map((l) => (
-            <div key={l[0]} className="langague">
+            <div key={l[0]} className={styles.langague}>
               <span>{l[0]}</span>
               <span>{l[1]}</span>
               <button
                 onClick={() => removeLanguage(l[0])}
-                className="remove-btn">
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
@@ -66,8 +66,8 @@ export default function Languages() {
         </div>
       )}
       <form>
-        <div className="langagues-input-wrapper">
-          <div className="languages-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-language">
               {capitalize(t("language"))}*
             </label>
@@ -91,7 +91,7 @@ export default function Languages() {
               required="required"
             />
           </div>
-          <button onClick={addLanguage} className="add-btn">
+          <button onClick={addLanguage} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

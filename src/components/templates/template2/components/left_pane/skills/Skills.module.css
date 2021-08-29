@@ -1,0 +1,9 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-weight: bold;
+}
+
+wrapper > span {
+  margin-bottom: 5px;
+}

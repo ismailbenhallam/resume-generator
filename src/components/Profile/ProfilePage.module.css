@@ -1,0 +1,60 @@
+.profilePage {
+  background-color: rgb(221, 251, 251);
+  width: 80%;
+  height: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px saddlebrown solid;
+  border-radius: 5px;
+}
+
+.profilePage input {
+  font-size: 1.4rem;
+}
+
+.h1 {
+  margin: 20px auto 40px auto;
+}
+
+.grid {
+  display: grid;
+  /* flex-direction: row; */
+  grid-template-columns: auto 70%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Information Tab */
+.informationsTab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+.informationsTab ul {
+  list-style-type: none;
+  padding-inline-start: unset;
+  margin-top: unset;
+}
+
+.informationsTab ul li {
+  cursor: pointer;
+}
+
+.informationsTab ul li:hover {
+  color: orangered;
+}
+
+.informationsTab ul li.active {
+  color: orangered;
+  font-weight: bold;
+}
+
+/* Active tab */
+.activeTab {
+  width: 100%;
+}

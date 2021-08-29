@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
 import useToast from "../../../hooks/useToast";
 import InterestsService from "../../../services/interests-service";
 import capitalize from "../../../utilities/capitalize";
-import "./Interests.css";
+import styles from "./Interests.module.css";
 
 export default function Interests() {
   const { t } = useTranslation();
@@ -53,13 +53,15 @@ export default function Interests() {
   };
 
   return (
-    <div className="interests">
+    <div className={styles.interests}>
       {state.interests.length > 0 && (
-        <div className="interests-list">
+        <div className={styles.interestsList}>
           {state.interests.map((i) => (
-            <div key={i} className="interest">
+            <div key={i} className={styles.interest}>
               <span>{i}</span>
-              <button onClick={() => removeInterest(i)} className="remove-btn">
+              <button
+                onClick={() => removeInterest(i)}
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
@@ -67,8 +69,8 @@ export default function Interests() {
         </div>
       )}
       <form>
-        <div className="interests-input-wrapper">
-          <div className="interests-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-interest">
               {capitalize(t("interest"))}
             </label>
@@ -81,7 +83,7 @@ export default function Interests() {
               required="required"
             />
           </div>
-          <button onClick={addInterest} className="add-btn">
+          <button onClick={addInterest} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

@@ -1,3 +1,8 @@
+:root {
+  --template2-accent-color: #2ca187;
+  --template2-main-color: rgb(100, 95, 95);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

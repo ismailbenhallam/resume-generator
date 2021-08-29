@@ -9,7 +9,7 @@ import Experiences from "./experiences/Experiences";
 import Interests from "./interests/Interests";
 import Languages from "./languages/Languages";
 import PrincipalSkillss from "./principal-skills/PrincipalSkills";
-import "./ProfilePage.css";
+import styles from "./ProfilePage.module.css";
 import Skills from "./skills/Skills";
 
 export default function ProfilePage() {
@@ -36,10 +36,10 @@ export default function ProfilePage() {
   };
 
   return (
-    <div id="profile-page">
-      <h1>{t("My Profile")}</h1>
-      <div className="grid">
-        <div className="informations-tab">
+    <div className={styles.profilePage}>
+      <h1 className={styles.h1}>{t("My Profile")}</h1>
+      <div className={styles.grid}>
+        <div className={styles.informationsTab}>
           <ul>
             {keyElements.map((key, index) =>
               selectedKey === key ? (
@@ -47,7 +47,7 @@ export default function ProfilePage() {
                   key={key}
                   onClick={handleLiClick}
                   data-key={key}
-                  className="active">
+                  className={styles.active}>
                   {capitalize(elements[index])}
                 </li>
               ) : (
@@ -58,7 +58,7 @@ export default function ProfilePage() {
             )}
           </ul>
         </div>
-        <div className="active-tab">
+        <div className={styles.activeTab}>
           {selectedKey === "coordinates" && <Coordinates />}
           {selectedKey === "languages" && <Languages />}
           {selectedKey === "assets" && <Assets />}

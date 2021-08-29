@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast.js";
 import useToast from "../../../hooks/useToast.js";
 import EducationService from "../../../services/education-service.js";
 import capitalize from "../../../utilities/capitalize.js";
-import "./Education.css";
+import styles from "./Education.module.css";
 
 export default function Education() {
   const { t } = useTranslation();
@@ -69,19 +69,19 @@ export default function Education() {
   };
 
   return (
-    <div className="educations">
+    <div className={styles.educations}>
       {education.length > 0 && (
-        <div className="educations-list">
+        <div className={styles.educationsList}>
           {education.map((educ, index) => (
             <Fragment key={educ.title}>
-              <div key={educ.title} className="education">
+              <div key={educ.title} className={styles.education}>
                 <span>{educ.title}</span>
                 <span>{educ.school}</span>
                 <span>{educ.place}</span>
                 <span>{educ.period}</span>
                 <button
                   onClick={() => removeEducation(educ)}
-                  className="remove-btn">
+                  className={styles.removeBtn}>
                   X
                 </button>
               </div>
@@ -91,8 +91,8 @@ export default function Education() {
         </div>
       )}
       <form>
-        <div className="langagues-input-wrapper">
-          <div className="educations-input">
+        <div className={styles.inputWrapper}>
+          <div className={styles.input}>
             <label htmlFor="input-new-education">
               {capitalize(t("title"))}*
             </label>
@@ -141,7 +141,7 @@ export default function Education() {
               required="required"
             />
           </div>
-          <button onClick={addEducation} className="add-btn">
+          <button onClick={addEducation} className={styles.addBtn}>
             {capitalize(t("add"))}
           </button>
         </div>

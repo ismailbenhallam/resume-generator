@@ -4,16 +4,16 @@ import PhotoAndName from "./photo_and_name/PhotoAndName";
 import Education from "./realizations/education/Education";
 import Experiences from "./realizations/experiences/Experiences";
 import Skills from "./skills/Skills";
-import "./Template1.css";
+import styles from "./Template1.module.css";
 
 export default function Template1() {
   return (
     <>
-      <div className="template1 left">
+      <div className={styles.left}>
         <PhotoAndName />
         <Details />
       </div>
-      <div className="template1 right">
+      <div className={styles.right}>
         <Experiences />
         <Education />
         <Skills />

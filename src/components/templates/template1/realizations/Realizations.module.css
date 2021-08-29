@@ -1,0 +1,36 @@
+.realizations {
+  display: grid;
+  grid-gap: 10px 20px;
+  grid-template-columns: 20% auto;
+  align-items: center;
+  margin: 0 45px 0 10px;
+  font-size: 0.7rem;
+}
+
+.period {
+  color: rgba(107, 100, 100, 0.692);
+  margin-left: 10px;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.enterprise {
+  color: blue;
+}
+
+.details {
+  color: rgb(97, 94, 94);
+  margin-top: 2px;
+}
+
+.more {
+  margin-top: 1px;
+  color: rgba(107, 100, 100, 0.753);
+  font-style: italic;
+}

@@ -1,0 +1,9 @@
+.languages {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.language {
+  display: flex;
+  flex-direction: column;
+}

@@ -3,7 +3,7 @@ import AssetsService from "../../../../../services/assets-service";
 import Divider from "../../helpers/divider/Divider";
 import Margin from "../../helpers/margin/Margin";
 import DetailsSectionTitle from "../details_section_title/DetailsSectionTitle";
-import "./Assets.css";
+import styles from "./Assets.module.css";
 
 export default function Assets() {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export default function Assets() {
       <Divider />
       <DetailsSectionTitle title={t("assets")} />
       <Margin value="5px 15px">
-        <div className="assets-wrapper">{elements}</div>
+        <div className={styles.assetsWrapper}>{elements}</div>
       </Margin>
     </>
   ) : (

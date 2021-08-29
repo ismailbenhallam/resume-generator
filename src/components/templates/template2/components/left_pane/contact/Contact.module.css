@@ -1,0 +1,23 @@
+.contact {
+  /* font-family: "Gowun Batang"; */
+  display: grid;
+  grid-gap: 5px 5px;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  line-height: normal;
+  font-size: 0.71rem;
+  font-weight: bold;
+}
+
+.contact a {
+  color: var(--template2-main-color);
+  text-decoration: none;
+}
+
+.contact .icon {
+  /* margin: auto;
+  font-size: 0.7rem; */
+  color: var(--template2-accent-color);
+}

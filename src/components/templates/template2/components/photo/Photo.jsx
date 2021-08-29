@@ -1,9 +1,9 @@
 import photo from "../../../../../ismail.jpg";
-import "./Photo.css";
+import styles from "./Photo.module.css";
 
 export default function Photo() {
   return (
-    <div className="photo-wrapper">
+    <div className={styles.photoWrapper}>
       <img src={photo} alt="Me :)" />
     </div>
   );

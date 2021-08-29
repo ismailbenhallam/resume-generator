@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CoordinatesService from "../../../../../../services/coordinates";
 import calculateAge from "../../../../../../utilities/calclulateAgeFromStringDate";
 import getUsernameFromNetworkUrl from "../../../../../../utilities/getUsernameFromNetworkUrl.js";
-import "./Contact.css";
+import styles from "./Contact.module.css";
 
 export default function Contact({ shouldCalculateAge, ageSuffix }) {
   const service = new CoordinatesService();
@@ -41,10 +41,10 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
   };
 
   return (
-    <div className="contact">
+    <div className={styles.contact}>
       {mobile && (
         <>
-          <FontAwesomeIcon className="icon" icon={faPhoneAlt} />
+          <FontAwesomeIcon className={styles.icon} icon={faPhoneAlt} />
           <a href={"tel:" + mobile} target="_blank" rel="noreferrer">
             {mobile}
           </a>
@@ -52,13 +52,13 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
       )}
       {address && (
         <>
-          <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
+          <FontAwesomeIcon className={styles.icon} icon={faMapMarkerAlt} />
           <span>{address}</span>
         </>
       )}
       {email && (
         <>
-          <FontAwesomeIcon className="icon" icon={faEnvelope} />
+          <FontAwesomeIcon className={styles.icon} icon={faEnvelope} />
           <a href={"mailto:" + email} target="_blank" rel="noreferrer">
             {email}
           </a>
@@ -66,7 +66,7 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
       )}
       {birthDate && (
         <>
-          <FontAwesomeIcon className="icon" icon={faBirthdayCake} />
+          <FontAwesomeIcon className={styles.icon} icon={faBirthdayCake} />
           <span>
             {shouldCalculateAge
               ? calculateAge(birthDate, ageSuffix)
@@ -76,7 +76,7 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
       )}
       {linkedin && (
         <>
-          <FontAwesomeIcon className="icon" icon={faLinkedin} />
+          <FontAwesomeIcon className={styles.icon} icon={faLinkedin} />
           <a href={linkedin} target="_blank" rel="noreferrer">
             @{getUsernameFromNetworkUrl(linkedin)}
           </a>
@@ -84,7 +84,7 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
       )}
       {github && (
         <>
-          <FontAwesomeIcon className="icon" icon={faGithub} />
+          <FontAwesomeIcon className={styles.icon} icon={faGithub} />
           <a href={github} target="_blank" rel="noreferrer">
             @{getUsernameFromNetworkUrl(github)}
           </a>
@@ -92,7 +92,7 @@ export default function Contact({ shouldCalculateAge, ageSuffix }) {
       )}
       {website && (
         <>
-          <FontAwesomeIcon className="icon" icon={faInternetExplorer} />
+          <FontAwesomeIcon className={styles.icon} icon={faInternetExplorer} />
           <a href={website} target="_blank" rel="noreferrer">
             {website}
           </a>

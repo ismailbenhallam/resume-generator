@@ -1,0 +1,9 @@
+.sectionTitle h3 {
+  color: var(--template2-accent-color);
+  margin-bottom: -3px;
+}
+
+.sectionTitle hr {
+  border-color: var(--template2-accent-color);
+  background-color: var(--template2-accent-color);
+}

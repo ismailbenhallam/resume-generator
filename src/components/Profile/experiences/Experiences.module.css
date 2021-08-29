@@ -1,0 +1,58 @@
+.experiencesList {
+  margin-bottom: 40px;
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: 35% auto 35% 8%;
+  margin-bottom: 40px;
+  row-gap: 20px;
+  column-gap: 10px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.period {
+  color: rgb(68, 65, 65);
+}
+
+.removeBtn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+  height: max-content;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: auto 30% auto 30%;
+  row-gap: 10px;
+  column-gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.addBtn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}
+
+.experiences input {
+  font-size: 1.4rem;
+}
+
+.experiences .icon {
+  color: rgb(241, 23, 59);
+}

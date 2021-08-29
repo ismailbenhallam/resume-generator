@@ -1,9 +1,0 @@
-.template2 .skills-wrapper {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  font-weight: bold;
-}
-
-.template2 .skills-wrapper > span {
-  margin-bottom: 5px;
-}

@@ -1,0 +1,41 @@
+.skillsList {
+  margin-bottom: 40px;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 18% auto 8%;
+  margin-bottom: 10px;
+  column-gap: 15px;
+}
+
+.removeBtn {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid;
+  border-radius: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+  height: max-content;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: max-content auto max-content auto;
+  row-gap: 10px;
+  column-gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.addBtn {
+  margin-top: 30px;
+  background-color: greenyellow;
+}

@@ -4,7 +4,7 @@ import useRequiredFieldsToast from "../../../hooks/useRequiredFieldsToast";
 import useToast from "../../../hooks/useToast";
 import PrincipalSkillsService from "../../../services/principal-skills-service";
 import capitalize from "../../../utilities/capitalize";
-import "./PrincipalSkills.css";
+import styles from "./PrincipalSkills.module.css";
 
 export default function PrincipalSkillss() {
   const { t } = useTranslation();
@@ -41,23 +41,23 @@ export default function PrincipalSkillss() {
   };
 
   return (
-    <div className="principalSkills">
+    <div className={styles.principalSkills}>
       {principalSkills.length > 0 && (
-        <div className="principalSkills-list">
+        <div className={styles.principalSkillsList}>
           {principalSkills.map((skill) => (
-            <div key={skill} className="principalSkill">
+            <div key={skill} className={styles.principalSkill}>
               <span>{skill}</span>
               <button
                 onClick={() => removePrincipalSkills(skill)}
-                className="remove-btn">
+                className={styles.removeBtn}>
                 X
               </button>
             </div>
           ))}
         </div>
       )}
-      <form className="principalSkills-input-wrapper">
-        <div className="principalSkills-input">
+      <form className={styles.inputWrapper}>
+        <div className={styles.input}>
           <label htmlFor="input-new-principalSkills">
             {capitalize(t("principal skill"))}
           </label>
@@ -70,7 +70,7 @@ export default function PrincipalSkillss() {
             required="required"
           />
         </div>
-        <button onClick={addPrincipalSkills} className="add-btn">
+        <button onClick={addPrincipalSkills} className={styles.addBtn}>
           {capitalize(t("add"))}
         </button>
       </form>
